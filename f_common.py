@@ -1,17 +1,18 @@
 # Common Functions/Procedures:
 # strLength(str)        menyerupai fungsi len()
 # strSplit(str, delimiter=' ')      mirip dengan fungsi .split()
-
+# ...
 
 # fungsi strLength
 def strLength(str):     # ekuivalen dengan len() untuk string
     str += '爱'  # sentinel 爱
     count = 0
-    while str[count] != '爱':
+    while str[count] != '爱':   # mengecek secara iteratif apakah char pada array of char (string) adalah sentinel
         count+=1
-    return count        
+    return count        # return jumlah karakter yang bukan sentinel        
 
 def strSplit(str, delimiter = None):    # berfungsi sama dengan fungsi .split() tanpa parameter maxsplit
+    # apabila parameter delimiter tidak dimasukkan (None), maka strSplit akan memisahkan str menjadi beberapa string yang bukan ' ' 
     strSplitResult = []
     strLen = strLength(str)
     i = 0
@@ -34,11 +35,10 @@ def strSplit(str, delimiter = None):    # berfungsi sama dengan fungsi .split() 
                 strSplitResult += [tempstr]
                 tempstr = ''
     
-    if tempstr != '':       # mengecek hasil split yang tertinggal
+    # penambahan hasil split yang tertinggal
+    if tempstr != '':
         strSplitResult += [tempstr]
     elif not noDelim:
         strSplitResult += [tempstr]
-    return strSplitResult
-
-print(strSplit(input()))
-
+    
+    return strSplitResult   # return array hasil
