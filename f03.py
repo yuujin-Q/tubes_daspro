@@ -1,7 +1,6 @@
 # # direvisi kalo register dah jadi;
 
-# from csv_parser import *
-# from hashing import *
+# import f_csvparser
 
 # file = csv_arr("user.csv")
 # for i in range(len(file)):
