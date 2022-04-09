@@ -1,6 +1,6 @@
 # MODUL F01 - Dekomposisi, Abstraksi dan Generalisasi Pola dengan Modular Programming
 
-# # Import modul
+# Import modul
 # import f02
 # import f03
 # import f04
