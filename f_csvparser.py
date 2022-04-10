@@ -6,10 +6,16 @@ F.S.: variabel user, game, riwayat, kepemilikan dengan tipe array of array
 '''
 
 # KAMUS LOKAL
-# filename, folder, filedir : string
-# file : csv file
-# lines : function readlines
-# user, game, riwayat, kepemilikan : array of array
+# filename, folder, filepath : string
+# file : text csv file
+# lines : list of string; hasil function readlines
+# line : string; string individual dari lines
+# templine : string; pemrosesan terhadap line
+# strlen: int: panjang line
+# i : int; indeks traversal
+# temprow : array of string; penambahan baris dalam arr
+# arr : array of array of string; hasil akhir parsing csv
+
 
 # ALGORITMA
 # IMPORT MODULE
@@ -19,27 +25,25 @@ import f_common as common
 def csv_to_arr(filename, folder):
     arr = []
 
-    if filename == 'user':
-        filedir = '.\\'+folder+'\\user.csv'
-    elif filename == 'game':
-        filedir = '.\\'+folder+'\\game.csv'
-    elif filename == 'riwayat':
-        filedir = '.\\'+folder+'\\riwayat.csv'
-    elif filename == 'kepemilikan':
-        filedir = '.\\'+folder+'\\kepemilikan.csv'
+    filepath = '.\\' + folder + '\\' + filename + '.csv'
     
-    file = open(filedir,'r')
+    file = open(filepath,'r')
     lines = file.readlines()
 
     for line in lines:
         temprow = []
         templine = ""
-        for i in range(common.strLength(line) - 1):     # untuk menghapus escape character newline pada line ('\n')
+        strlen = common.strLength(line)
+        for i in range(strlen):     # untuk menghapus escape character newline pada line ('\n')
+            if i < strlen:
+                if line[i] == "\n":
+                    break
             templine += line[i]
-        temprow = common.strSplit(templine, ',')
+        temprow = common.strSplit(templine, ';')  # delimiter ';'
         arr += [temprow]
     return arr
 
+# implementasi
 # filename = input()
 # folder = input()
 # print(csv_to_arr(filename,folder))
