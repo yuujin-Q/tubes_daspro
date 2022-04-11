@@ -33,17 +33,21 @@ def csv_to_arr(filename, folder):
     for line in lines:
         temprow = []
         templine = ""
-        strlen = common.strLength(line)
+        strlen = common.iterLength(line)
         for i in range(strlen):     # untuk menghapus escape character newline pada line ('\n')
             if i < strlen:
                 if line[i] == "\n":
                     break
             templine += line[i]
-        temprow = common.strSplit(templine, ';')  # delimiter ';'
-        arr += [temprow]
+        temprow = common.strSplit(templine, ';')  # pemisahan temprow dengan delimiter ';'
+        arr += [temprow]        # penambahan baris (temprow) ke hasil
     return arr
 
 # implementasi
 # filename = input()
 # folder = input()
-# print(csv_to_arr(filename,folder))
+# array_of_csv = csv_to_arr(filename,folder)
+# arrlen = common.iterLength(array_of_csv)
+# for i in range(arrlen):
+#     print(array_of_csv[i])
+# print(arrlen)
