@@ -4,7 +4,6 @@ Spesifikasi: Admin dapat mendaftarkan pengguna baru
 I.S. : input nama, username, password
 F.S. : pengguna terdaftar sebagai user (jika username belum pernah terpakai)
 atau tidak terdaftar sebagai user (jika username sudah terpakai)
-
 Desainer dan coder : 16521172
 '''
 
@@ -17,7 +16,8 @@ Desainer dan coder : 16521172
 
 # ALGORITMA
 # import modul yang diperlukan
-import f16 as save_changes
+from f16 import save_changes
+from f_csvparser import csv_to_arr
 
 # realisasi fungsi
 def register ():
@@ -25,34 +25,21 @@ def register ():
     nama = input("Masukkan nama: ")
     username = input("Masukkan username: ")
     password = input("Masukkan password: ")
-
-    # panggil modul parser
-    ## cek apakah username unik
-    ## membuka file user.csv dari folder
-    #folder = 'admin'
-    #path = folder + '\user.csv'
-    #file_user = open(path, 'r')
-    #lines = file_user.readlines()
-    #count_line = 0
-    #
-    ## menghitung jumlah baris dalam file user.csv
-    #for user in lines:
-    #    count_line += 1
-    #
-    ## mencari username pada file user.csv
-    #if count_line>0:
-    #    # jika ada data user, maka cek
-    #    index_line = 0
-    #    for user in lines:
-    #        index_line += 1
-    #        if (username == user):
-    #            # jika username sudah terpakai
-    #            print("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
-    #        elif (count_line == index_line):
-    #            # jika username belum pernah terpakai (sudah cek sampai baris terakhir)
-    #            print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
-    #            save_changes
-    #else:
-    #    # jika belum ada data user, maka dapat langsung terdaftar
-    #    print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
-    #    save_changes
+    
+    # deklarasikan array file user.csv
+    file_user = csv_to_arr('user','csv_files')
+    data_username = [file_user[i][1] for i in range (len(file_user))]
+    
+    # cek apakah username terpakai
+    found = False
+    i=0
+    while (found == False) and (i<(len(file_user))):
+        if username == data_username[i]:
+            # username sudah terpakai
+            print("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
+            found = True
+        elif i == (len(file_user) - 1):
+            # username belum terpakai
+            print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
+            save_changes()
+        i += 1
