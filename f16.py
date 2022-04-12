@@ -1,4 +1,4 @@
 
 
 def save():
-    print()
+    print("saved")
