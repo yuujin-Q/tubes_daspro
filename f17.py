@@ -3,7 +3,7 @@
 import f16 as f16
 
 
-def f_exit():
+def bnmo_exit():
     # SPESIFIKASI: mengeluarkan pengguna dari program; fungsi ini akan menanyakan pengguna apakah ingin melakukan save
     # KAMUS LOKAL:
         # choice : string
