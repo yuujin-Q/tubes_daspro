@@ -8,7 +8,7 @@ Desainer dan coder : 16521172, 16521316
 
 # KAMUS LOKAL
 # id_game : string
-# jumlah : int
+# jumlah, stok_game : int
 # file_game : array of array
 # 
 
@@ -21,7 +21,7 @@ from f_csvparser import csv_to_arr
 #Fungsi untuk mengubah game pada toko oleh admin
 def ubah_game():
     id_game = input("Masukkan ID game: ")
-    jumlah = input("Masukkan jumlah: ")
+    jumlah = int(input("Masukkan jumlah: "))
     
     # deklarasikan array file game.csv
     file_game = csv_to_arr('game','csv_files')
@@ -30,15 +30,17 @@ def ubah_game():
     for i in range (len(file_game)):
         if id_game == file_game[i][0]:
             # cari data melalui id game
-            if jumlah>0:
-                file_game[i][5] += jumlah
-                print("Stok game " + file_game[i][1] + " berhasil ditambahkan. Stok sekarang: " + str(file_game[i][5]))
+            stok_game = int(file_game[i][5])
+            if jumlah>=0:
+                stok_game += jumlah
+                print("Stok game " + file_game[i][1] + " berhasil ditambahkan. Stok sekarang: " + str(stok_game))
             else: #jumlah<0
-                if file_game[i][5] >= (-1)*jumlah:
-                    file_game[i][5] += jumlah
-                    print("Stok game " + file_game[i][1] + " berhasil dikurangi. Stok sekarang: " + str(file_game[i][5]))
+                if stok_game >= (-1)*jumlah:
+                    stok_game += jumlah
+                    print("Stok game " + file_game[i][1] + " berhasil dikurangi. Stok sekarang: " + str(stok_game))
                 else:
-                    print("Stok game " + file_game[i][1] + " gagal dikurangi karena stok kurang. Stok sekarang: " + str(file_game[i][5]))
+                    print("Stok game " + file_game[i][1] + " gagal dikurangi karena stok kurang. Stok sekarang: " + str(stok_game))
+            break
         elif i == (len(file_game)-1):
             print("Tidak ada game dengan ID tersebut!")
-    save_changes()
+    #save_changes()
