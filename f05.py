@@ -13,6 +13,7 @@ Desainer dan coder : 16521172, 16521199
 # ALGORITMA
 # IMPORT MODUL
 import f16 as save_changes
+import f_common as common
 from f_csvparser import csv_to_arr
 
 # REALISASI FUNGSI
@@ -26,10 +27,10 @@ def ubah_game():
     
     # deklarasikan array file game.csv
     file_game = csv_to_arr('game','csv_files')
-    arr_id = [file_game[i][0] for i in range (len(file_game))]    
+    arr_id = [file_game[i][0] for i in range (common.iterLength(file_game))]    
     
     # cari id game
-    for i in range (len(file_game)):
+    for i in range (common.iterLength(file_game)):
         if id_game == arr_id[i]:
             if nama_game != '':
                 file_game[i][1] = nama_game

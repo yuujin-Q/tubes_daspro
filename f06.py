@@ -8,39 +8,55 @@ Desainer dan coder : 16521172, 16521316
 
 # KAMUS LOKAL
 # id_game : string
-# jumlah, stok_game : int
+# jumlah: int
 # file_game : array of array
-# 
 
 # ALGORITMA
 # IMPORT MODUL
-import f16 as save_changes
+import csv
+import f_common as common
 from f_csvparser import csv_to_arr
 
 # REALISASI FUNGSI
 #Fungsi untuk mengubah game pada toko oleh admin
 def ubah_game():
+    global game    
+
     id_game = input("Masukkan ID game: ")
-    jumlah = int(input("Masukkan jumlah: "))
-    
-    # deklarasikan array file game.csv
-    file_game = csv_to_arr('game','csv_files')
-    
+
     # ubah stok
-    for i in range (len(file_game)):
-        if id_game == file_game[i][0]:
+    for i in range (common.iterLength(game)):
+        if id_game == game[i][0]:
+            jumlah = int(input("Masukkan jumlah: "))
+
             # cari data melalui id game
-            stok_game = int(file_game[i][5])
+            
             if jumlah>=0:
-                stok_game += jumlah
-                print("Stok game " + file_game[i][1] + " berhasil ditambahkan. Stok sekarang: " + str(stok_game))
+                game[i][5] = str(int(game[i][5]) + jumlah)
+                print("Stok game " + game[i][1] + " berhasil ditambahkan. Stok sekarang: " + game[i][5])
             else: #jumlah<0
-                if stok_game >= (-1)*jumlah:
-                    stok_game += jumlah
-                    print("Stok game " + file_game[i][1] + " berhasil dikurangi. Stok sekarang: " + str(stok_game))
+                if int(game[i][5]) >= (-1)*jumlah:
+                    game[i][5] = str(int(game[i][5]) + jumlah)
+                    print("Stok game " + game[i][1] + " berhasil dikurangi. Stok sekarang: " + game[i][5])
                 else:
-                    print("Stok game " + file_game[i][1] + " gagal dikurangi karena stok kurang. Stok sekarang: " + str(stok_game))
+                    print("Stok game " + game[i][1] + " gagal dikurangi karena stok kurang. Stok sekarang: " + game[i][5])
             break
-        elif i == (len(file_game)-1):
+        elif i == (common.iterLength(game)-1):
             print("Tidak ada game dengan ID tersebut!")
-    #save_changes()
+
+
+
+
+# UJI COBA
+# game = csv_to_arr('game', 'save0')
+
+# for i in range(common.iterLength(game)):
+#     print(game[i])
+
+# print()
+
+# ubah_game()
+
+# print()
+# for i in range(common.iterLength(game)):
+#     print(game[i])

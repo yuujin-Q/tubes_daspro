@@ -25,10 +25,11 @@ import f_common as common
 def csv_to_arr(filename, folder):
     arr = []
 
-    filepath = '.\\' + folder + '\\' + filename + '.csv'
+    filepath = '.\\saves\\' + folder + '\\' + filename + '.csv'
     
     file = open(filepath,'r')
     lines = file.readlines()
+    file.close()
 
     for line in lines:
         temprow = []
