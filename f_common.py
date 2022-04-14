@@ -6,6 +6,9 @@
 # ...
 
 # fungsi iterLength
+from f_csvparser import csv_to_arr
+
+
 def iterLength(iterable):
     # SPESIFIKASI: menghasilkan panjang dari sebuah array atau string (tipe iterable)
     # KAMUS LOKAL:
@@ -91,3 +94,25 @@ def arrarr_to_str(arrarr, delim):
         strResult += arr_to_str(arrarr[i],delim)
         strResult += '\n'         # penambahan '\n' pada akhir baris
     return strResult
+
+def alignTable(arr):
+    # SPESIFIKASI : merapikan output tabel (array); I.S: arr terdefinisi dan jumlah baris>1 (indeks pertama nol)
+    # KAMUS LOKAL
+        # arr : array of string
+        # maxlength : array of int
+
+    # ALGORITMA
+    maxlength = []      # array yang berisi panjang string maksimum pada sebuah kolom
+    for col in range(iterLength(arr[0])):     # pencarian panjang maksimum pada kolom
+        colmax = iterLength(arr[0][col])
+        for row in range(iterLength(arr)):
+            if iterLength(arr[row][col]) > colmax:
+                colmax = iterLength(arr[row][col])
+        maxlength += [colmax]
+    
+    # menambahkan spasi pada elemen sehingga panjang setiap elemen sama
+    for row in range(iterLength(arr)):
+        for col in range(iterLength(arr[row])):
+            arr[row][col] += (maxlength[col] - iterLength(arr[row][col])) * " "
+    
+    return arr
