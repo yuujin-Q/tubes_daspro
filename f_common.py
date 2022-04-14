@@ -6,9 +6,6 @@
 # ...
 
 # fungsi iterLength
-from f_csvparser import csv_to_arr
-
-
 def iterLength(iterable):
     # SPESIFIKASI: menghasilkan panjang dari sebuah array atau string (tipe iterable)
     # KAMUS LOKAL:
@@ -116,3 +113,21 @@ def alignTable(arr):
             arr[row][col] += (maxlength[col] - iterLength(arr[row][col])) * " "
     
     return arr
+
+def create_inventory_arr(kepemilikan, game, userid):
+    # SPESIFIKASI: menghasilkan array yang berisi data game yang dimiliki seorang user
+    # KAMUS LOKAL:
+        # user_inventory : array of array
+        # i, j : integer
+    # ALGORITMA:
+    
+    user_inventory = []
+    userid = str(userid)
+    for i in range(1,iterLength(kepemilikan)):     # membuat array yang berisi id dari game-game yang dimiliki seorang user
+        if kepemilikan[i][1] == userid:
+            user_inventory += [kepemilikan[i][0]]
+    for i in range(iterLength(user_inventory)):      # menambahkan data game dari toko berdasarkan id yang baru disimpan dalam array user_inventory
+        for j in range(1, iterLength(game)):
+            if user_inventory[i] == game[j][0]:
+                user_inventory[i] = [game[j][0], game[j][1], game[j][4], game[j][2], game[j][3]]
+    return user_inventory

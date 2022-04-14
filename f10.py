@@ -24,17 +24,7 @@ Desainer dan coder : 16521172, 16521316
 import f_common as common
 
 # REALISASI FUNGSI
-def search_my_game(inventory, games, userid):
-    user_inventory = []
-    userid = str(userid)
-    for i in range(1,common.iterLength(inventory)):     # membuat array yang berisi id dari game-game yang dimiliki seorang user
-        if inventory[i][1] == userid:
-            user_inventory += [inventory[i][0]]
-    for i in range(common.iterLength(user_inventory)):      # menambahkan data game dari toko berdasarkan id yang baru disimpan dalam array user_inventory
-        for j in range(1, common.iterLength(games)):
-            if user_inventory[i] == games[j][0]:
-                user_inventory[i] = [games[j][0], games[j][1], games[j][4], games[j][2], games[j][3]]
-    
+def search_my_game(user_inventory):
     # input dari user
     id_game = input("Masukkan ID Game: ")
     tahun_rilis = input("Masukkan Tahun Rilis Game: ")
