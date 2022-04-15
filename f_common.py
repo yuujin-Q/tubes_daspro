@@ -151,7 +151,20 @@ def create_tokogame_arr(game):
             tokogame += [[game[j][0], game[j][1], game[j][4], game[j][2], game[j][3], game[j][5]]]
     return tokogame
 
-# 
+def create_userhistory_arr(riwayat, userid):
+    # SPESIFIKASI: menghasilkan array yang berisi data riwayat pembelian game oleh seorang user
+    # KAMUS LOKAL:
+        # userhistory : array of array
+        # j : integer
+    # ALGORITMA:
+    userhistory = []
+
+    if iterLength(riwayat)>1:
+        for j in range(1, iterLength(riwayat)):   # membuat baris pada tokogame
+            if str(userid) == riwayat[j][3]:
+                userhistory += [[riwayat[j][0], riwayat[j][1], riwayat[j][2], riwayat[j][4]]]
+    return userhistory
+
 
 def remove_thousands(numstr):
     # SPESIFIKASI: menerima string numerik yang berisi pemisah ribuan '.' dan mengembalikan sebagai string numerik saja

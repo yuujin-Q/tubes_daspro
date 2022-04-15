@@ -8,7 +8,7 @@ import f04 as f04
 import f06 as f06
 import f07 as f07
 # import f08 as f08
-# import f09 as f09
+import f09 as f09
 import f10 as f10
 # import f11 as f11
 # import f12 as f12
@@ -24,14 +24,20 @@ import f10 as f10
 # f07 prosedur
 
 
-
+# tes
 kepemilikan = csvparser.csv_to_arr('kepemilikan', 'save0')
 game = csvparser.csv_to_arr('game', 'save0')
+riwayat = csvparser.csv_to_arr('riwayat', 'save0')
+user = csvparser.csv_to_arr('user', 'save0')
 
+
+userinventory = common.create_inventory_arr(kepemilikan, game, 0) # admin id 0
 tokogame = common.create_tokogame_arr(game)
+userhistory = common.create_userhistory_arr(riwayat, 0)
 #sebelum
-for i in range(common.iterLength(tokogame)):
-    print(tokogame[i])
+for i in range(common.iterLength(userhistory)):
+   print(userhistory[i])
 print()
 
-f07.list_game_toko(tokogame)
+
+# f09.list_game(userinventory)
