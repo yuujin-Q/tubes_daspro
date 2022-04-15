@@ -8,16 +8,18 @@ Desainer dan coder : 16521172
 '''
 
 # KAMUS LOKAL
-# nama, username, password : string
-# file_user : file csv
-# folder, path : string
-# lines : function readlines
-# count_line, index_line : int
-
+    # FUNGSI DAN PROSEDUR
+        # csv_to_arr(filename,folder: string) -> array of string
+        # common.iterLength(iterable: string or array) -> integer
+    # VARIABEL
+        # nama, username, password : string
+        # user : array of array of string
+        # data_username : array of string
+        
 # ALGORITMA
 # import modul yang diperlukan
-from f16 import save_changes
 from f_csvparser import csv_to_arr
+import f_common as common
 
 # realisasi fungsi
 def register ():
@@ -27,19 +29,15 @@ def register ():
     password = input("Masukkan password: ")
     
     # deklarasikan array file user.csv
-    file_user = csv_to_arr('user','csv_files')
-    data_username = [file_user[i][1] for i in range (len(file_user))]
+    user = csv_to_arr('user','save0')
+    data_username = [user[i][1] for i in range (1,common.iterLength(user))]
     
     # cek apakah username terpakai
-    found = False
-    i=0
-    while (found == False) and (i<(len(file_user))):
+    for i in range(common.iterLength(data_username)):
         if username == data_username[i]:
             # username sudah terpakai
             print("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
-            found = True
-        elif i == (len(file_user) - 1):
-            # username belum terpakai
+        elif i == (common.iterLength(data_username)-1):
             print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
-            save_changes()
-        i += 1
+            user += [[str(common.iterLength(user)-1),username,nama,password,'user','0']]
+    return user
