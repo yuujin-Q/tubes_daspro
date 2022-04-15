@@ -38,6 +38,7 @@ def register ():
             # username sudah terpakai
             print("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
         elif i == (common.iterLength(data_username)-1):
+            # username belum terpakai
             print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
-            user += [[str(common.iterLength(user)-1),username,nama,password,'user','0']]
+            user += [[str(common.iterLength(user)-1),username,nama,password,'user','0']] # menambahkan data user baru ke array user
     return user
