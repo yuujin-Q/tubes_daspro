@@ -3,10 +3,10 @@ import f_csvparser as csvparser
 import f_common as common
 # import f02 as f02
 # import f03 as f03
-# import f04 as f04
+import f04 as f04
 # import f05 as f05
-# import f06 as f06
-# import f07 as f07
+import f06 as f06
+import f07 as f07
 # import f08 as f08
 # import f09 as f09
 import f10 as f10
@@ -27,7 +27,11 @@ import f10 as f10
 
 kepemilikan = csvparser.csv_to_arr('kepemilikan', 'save0')
 game = csvparser.csv_to_arr('game', 'save0')
-inventory = common.create_inventory_arr(kepemilikan, game, 0)
-print(inventory)
-f10.search_my_game(inventory)
 
+tokogame = common.create_tokogame_arr(game)
+#sebelum
+for i in range(common.iterLength(tokogame)):
+    print(tokogame[i])
+print()
+
+f07.list_game_toko(tokogame)

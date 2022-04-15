@@ -20,9 +20,7 @@ import f_common as common
 
 # REALISASI FUNGSI
 #Fungsi untuk mengubah game pada toko oleh admin
-def ubah_game():
-    global game    # variabel global
-
+def ubah_game(game):
     id_game = input("Masukkan ID game: ") # input dari pengguna
 
     # ubah stok
@@ -43,4 +41,4 @@ def ubah_game():
             break
         elif i == (common.iterLength(game)-1):      # jika id game tidak ditemukan
             print("Tidak ada game dengan ID tersebut!")
-
+    return game
