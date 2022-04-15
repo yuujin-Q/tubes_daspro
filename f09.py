@@ -1,17 +1,8 @@
-# fungsi untuk melihat game yang dimiliki user 
-def list_game():
-    #kl user tidak memiliki game
-    print("Maaf, kamu belum membeli game. Ketik perintah beli_game untuk beli")
-    #kl punya
-    print("Daftar game:")
-    #blablabla
-
-
 '''
 MODUL F09-Melihat Game yang dimiliki
 Spesifikasi : Memberikan daftar game yang dimiliki pengguna
-I.S. : 
-F.S. : 
+I.S. : command
+F.S. : data game
 Desainer dan coder : 16521262, 16521199
 '''
 
