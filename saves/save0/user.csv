@@ -1,2 +1,4 @@
 id;username;nama;password;role;saldo
 0;Administrator;Admin;passwordadmin;Admin;999999
+1;doniSalaman;Doni;janganmainbnmo;User;100000
+2;indraKan;Indra;ayomainbnmo;User;3000000
