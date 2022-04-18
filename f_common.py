@@ -94,7 +94,8 @@ def arrarr_to_str(arrarr, delim):
     rowcount = iterLength(arrarr)        # jumlah baris data
     for i in range(rowcount):       # pemrosesan traversal baris
         strResult += arr_to_str(arrarr[i],delim)
-        strResult += '\n'         # penambahan '\n' pada akhir baris
+        if i<rowcount-1:
+            strResult += '\n'         # penambahan '\n' pada akhir baris
     return strResult
 
 def alignTable(arr):
