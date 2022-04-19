@@ -20,7 +20,7 @@ import f_common as common
 
 # REALISASI FUNGSI
 #Fungsi untuk mengubah game pada toko oleh admin
-def ubah_game(game):
+def ubah_stok(game):
     id_game = input("Masukkan ID game: ") # input dari pengguna
 
     # ubah stok

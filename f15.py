@@ -15,7 +15,7 @@ Desainer dan coder : 16521172, 16521199
         # user, game, riwayat, inventory : array of array of string
     
 # ALGORITMA
-
+# IMPORT MODUL DAN FUNGSI
 import f_common as common
 from f_csvparser import csv_to_arr
 import os

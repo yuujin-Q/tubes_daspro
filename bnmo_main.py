@@ -7,7 +7,7 @@ import f04 as f04
 # import f05 as f05
 import f06 as f06
 import f07 as f07
-# import f08 as f08
+import f08 as f08
 import f09 as f09
 import f10 as f10
 import f11 as f11
@@ -35,18 +35,19 @@ userinventory = common.create_inventory_arr(kepemilikan, game, 0) # admin id 0
 tokogame = common.create_tokogame_arr(game)
 userhistory = common.create_userhistory_arr(riwayat, 0)
 #sebelum
-print('sebelum')
-for i in range(1, common.iterLength(user)):
-    print(user[i])
-print()
+#print('sebelum')
+#for i in range(1, common.iterLength(user)):
+#    print(user[i])
+#print()
 
-print('hasil penambahan')
-user = f12.topup(user)
-for i in range(1, common.iterLength(user)):
-    print(user[i])
-for i in range(common.iterLength(userhistory)):
-   print(userhistory[i])
-print()
+#print('hasil penambahan')
+#user = f12.topup(user)
+#for i in range(1, common.iterLength(user)):
+#    print(user[i])
+#for i in range(common.iterLength(userhistory)):
+#   print(userhistory[i])
+#print()
 
+#f08.beli_game(user,game,kepemilikan,riwayat,userinventory,0)
 
 # f09.list_game(userinventory)
