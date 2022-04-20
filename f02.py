@@ -30,6 +30,7 @@ def register (user):
         if username == user[i][1]:
             # username sudah terpakai
             print("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
+            break
         elif i == (common.iterLength(user)-1):
             # username belum terpakai
             print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")

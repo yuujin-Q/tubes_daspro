@@ -43,39 +43,45 @@ else:
         print('Folder', '"%s"' % args.folder, 'tidak ditemukan.')
     else:
         user,game,riwayat,kepemilikan = f15.load(args.folder)
-        
+               
         # meminta perintah
-        functions = input(">>> ")
-        if functions == 'register':
-            f02.register(user)
-        elif functions == 'login':
-            f03.login()
-        elif functions=='tambah_game':
-            f04.tambah_game(game)
-        elif functions=='ubah_game':
-            f05.ubah_game(game)
-        elif functions=='ubah_stok':
-            f06.ubah_stok(game)
-        elif functions=='list_game_toko':
-            f07.list_game_toko(game)
-        elif functions=='buy_game':
-            f08.buy_game(user,game,kepemilikan,riwayat,userinventory,user_id)
-        elif functions=='list_game':
-            f09.list_game(userinventory)
-        elif functions=='search_my_game':
-            f10.search_my_game(userinventory)
-        elif functions=='search_game_at_store':
-            f11.search_game_at_store(tokogame)
-        elif functions=='topup':
-            f12.topup(user)
-        elif functions=='riwayat':
-            f13.riwayat()
-        elif functions=='help':
-            f14.Help()
-        elif functions=='save':
-            f16.save(user,game,kepemilikan,riwayat)
-        elif functions=='exit':
-            f17.bnmo_exit()
+        call_func = False
+        while not call_func:
+            functions = input(">>> ")
+            if functions == 'register':
+                user = f02.register(user)
+            elif functions == 'login':
+                user_id = f03.login()
+                #userinventory = common.create_inventory_arr(kepemilikan, game, user_id)
+                #tokogame = common.create_tokogame_arr(game)
+                #userhistory = common.create_userhistory_arr(riwayat, user_id)
+                # kalau belum bisa login, hanya bisa panggil perintah login saja
+            #elif functions=='tambah_game':
+            #    f04.tambah_game(game)
+            #elif functions=='ubah_game':
+            #    f05.ubah_game(game)
+            #elif functions=='ubah_stok':
+            #    f06.ubah_stok(game)
+            #elif functions=='list_game_toko':
+            #    f07.list_game_toko(game)
+            #elif functions=='buy_game':
+            #    f08.buy_game(user,game,kepemilikan,riwayat,userinventory,user_id)
+            #elif functions=='list_game':
+            #    f09.list_game(userinventory)
+            #elif functions=='search_my_game':
+            #    f10.search_my_game(userinventory)
+            #elif functions=='search_game_at_store':
+            #    f11.search_game_at_store(tokogame)
+            #elif functions=='topup':
+            #    f12.topup(user)
+            #elif functions=='riwayat':
+            #    f13.riwayat()
+            #elif functions=='help':
+            #    f14.Help()
+            #elif functions=='save':
+            #    f16.save(user,game,kepemilikan,riwayat)
+            #elif functions=='exit':
+            #    f17.bnmo_exit()
         
         
         
