@@ -21,7 +21,7 @@ import f_common as common
 import datetime
 
 # REALISASI FUNGSI
-def beli_game (user,game,kepemilikan,riwayat,user_inventory,user_id):
+def buy_game (user,game,kepemilikan,riwayat,user_inventory,user_id):
     id_game = input("Masukkan ID Game: ")   # input dari pengguna
     
     # mencari id game di game.csv

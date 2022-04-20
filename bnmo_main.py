@@ -42,9 +42,42 @@ else:
     if not isFolderExist:
         print('Folder', '"%s"' % args.folder, 'tidak ditemukan.')
     else:
-        f15.load(args.folder)
+        user,game,riwayat,kepemilikan = f15.load(args.folder)
         
-        #parser = argparse.ArgumentParser(prog="%s %s" % (os.path.basename(path.argv[0]), function))
+        # meminta perintah
+        functions = input(">>> ")
+        if functions == 'register':
+            f02.register(user)
+        elif functions == 'login':
+            f03.login()
+        elif functions=='tambah_game':
+            f04.tambah_game(game)
+        elif functions=='ubah_game':
+            f05.ubah_game(game)
+        elif functions=='ubah_stok':
+            f06.ubah_stok(game)
+        elif functions=='list_game_toko':
+            f07.list_game_toko(game)
+        elif functions=='buy_game':
+            f08.buy_game(user,game,kepemilikan,riwayat,userinventory,user_id)
+        elif functions=='list_game':
+            f09.list_game(userinventory)
+        elif functions=='search_my_game':
+            f10.search_my_game(userinventory)
+        elif functions=='search_game_at_store':
+            f11.search_game_at_store(tokogame)
+        elif functions=='topup':
+            f12.topup(user)
+        elif functions=='riwayat':
+            f13.riwayat()
+        elif functions=='help':
+            f14.Help()
+        elif functions=='save':
+            f16.save(user,game,kepemilikan,riwayat)
+        elif functions=='exit':
+            f17.bnmo_exit()
+        
+        
         
         
         
