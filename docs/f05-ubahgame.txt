@@ -1,0 +1,32 @@
+NOTASI ALGORITMIK
+
+function register (game : array of array of string) -> array of array of string
+{ Mengubah game pada toko game dengan memasukkan data }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        common.iterLength(iterable: string or array) -> integer
+    { VARIABEL }
+        id_game, nama_game, kategori : string
+        tahun_rilis, harga : integer
+        arr_id : array of string
+        
+ALGORITMA
+    input(id_game, nama_game, kategori, tahun_rilis, harga)
+    
+    { membuat array berisi id game }
+    i traversal [1..common.iterLength(game)]
+        arr_id <- arr_id + [game[i][0]]
+
+    { cari id game }
+    i traversal [1..common.iterLength(game)]
+        if id_game = arr_id[i] then
+            if nama_game != '' then             { jika input nama game tidak kosong }
+                game[i][1] <- nama_game         { maka gantikan elemen nama game dengan input dari pengguna }
+            if kategori != '' then              { jika input kategori game tidak kosong }
+                game[i][2] <- kategori          { maka gantikan elemen kategori game dengan input dari pengguna }
+            if tahun_rilis != '' then           { jika input tahun rilis game tidak kosong }
+                game[i][3] <- tahun_rilis       { maka gantikan elemen tahun rilis game dengan input dari pengguna }
+            if harga != '' then                 { jika input harga game tidak kosong }
+                game[i][4] <- harga             { maka gantikan elemen harga game dengan input dari pengguna }
+    -> game

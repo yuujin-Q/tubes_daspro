@@ -37,4 +37,5 @@ def tambah_game(game):
         id = 'GAME' + str(last_id)
     
     game += [[id, nama_game, kategori, tahun_rilis, harga, stok_awal]]      # menambahkan baris baru pada game
+    print(f'\nSelamat! Berhasil menambahkan game {nama_game}.')
     return game     # return game

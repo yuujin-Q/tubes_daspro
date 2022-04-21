@@ -1,0 +1,48 @@
+NOTASI ALGORITMIK
+
+procedure writecsv (input arr : array, input folder,filename : string)
+{ I.S. input parameter array yang ingin dituliskan ke csv file, serta nama folder dan file tempat array ditulis }
+{ F.S. file csv berisi data pada array }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        common.arr_to_str(arr : array; delim : string) -> string
+        common.arrarr_to_str(arrarr : array of array, delim : string) -> string
+    { VARIABEL }
+        path, str : string
+        csvdat : SEQFILE of string
+
+ALGORITMA
+    filename <- filename + '.csv'   { menambahkan format file .csv pada nama file }
+    path <- os.path.join(folder,filename)   { menuliskan path file }
+    str <- common.arrarr_to_str(arr,';')   { mengubah array menjadi string dengan delimiter ';' }
+    rewrite(csvdat)
+    write(csvdat,str)   { menuliskan array yang sudah diubah menjadi string ke dalam csv }
+    close(csvdat)   { menutup file csv }
+
+
+
+procedure save (input user,game,kepemilikan,riwayat : array of array of string)
+{ I.S. input nama folder tempat penyimpanan }
+{ F.S. file csv berisi data pada array }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        common.arr_to_str(arr : array; delim : string) -> string
+        common.arrarr_to_str(arrarr : array of array, delim : string) -> string
+    { VARIABEL }
+        folder, path, str : string
+
+ALGORITMA
+    input(folder)
+    if folder not in os.listdir('.\\saves') then   { jika folder belum ada }
+        os.mkdir('.\\saves\\'+folder)    { maka buat folder baru }
+    path <- os.path.join('.\\saves\\',folder)   { buat path folder }
+    { menuliskan array ke dalam file csv }
+    writecsv(user,path,'user')
+    writecsv(game,path,'game')
+    writecsv(kepemilikan,path,'kepemilikan')
+    writecsv(riwayat,path,'riwayat')
+    { output }
+    output("Saving...")
+    output("Data telah disimpan pada folder " + folder + "!")

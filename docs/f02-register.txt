@@ -1,0 +1,26 @@
+NOTASI ALGORITMIK
+
+function register (user : array of array of string) -> array of array of string
+{ Mendaftarkan pengguna baru oleh Admin }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        common.iterLength(iterable: string or array) -> integer
+    { VARIABEL }
+        nama, username, password : string
+        i : int
+        
+ALGORITMA
+    input(nama,username,password)
+    { username telah terpakai }
+    i traversal [1..common.iterLength(user)]
+        if username = user[i][1] then
+            { username sudah terpakai }
+            output("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
+            break
+        else if i = (common.iterLength(user)-1) then
+            { username belum terpakai }
+            output("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
+            { menambahkan data user baru ke array user }
+            user <- user + [[str(common.iterLength(user)-1),username,nama,password,'user','0']] 
+    -> user

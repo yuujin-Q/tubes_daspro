@@ -2,7 +2,7 @@
 MODUL F05-Mengubah Game pada Toko Game
 Spesifikasi: Mengubah game pada toko game dengan memasukkan data
 I.S. : input id, nama, kategori, tahun rilis, dan harga game
-F.S. : game.csv diperbaharui
+F.S. : array sementara game dalam program diperbaharui
 Desainer dan coder : 16521172, 16521199
 '''
 

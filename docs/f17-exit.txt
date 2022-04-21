@@ -1,0 +1,19 @@
+NOTASI ALGORITMIK
+
+function bnmo_exit(input user, game, kepemilikan, riwayat : array of array of string) -> boolean
+{I.S : user,game,kepemilikan,riwayat terdefinisi
+F.S: program utama dihentikan}
+
+KAMUS LOKAL
+    choice : string
+    procedure f16.save(input user,game,kepemilikan,riwayat : array of array of string)
+    {I.S:user,game,kepemilikan,riwayat terdefinisi; F.S: keempat array tersimpan sebagai csv}
+
+ALGORITMA
+    choice <- 'a'  {dummy}
+    while (not(choice = 'y' or choice='n')) do
+        output("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n) ")
+        input(choice)   {pada algoritma ini, asumsi input selalu lowercase}
+    if choice = 'y':
+        f16.save(user,game,kepemilikan,riwayat)
+    -> True

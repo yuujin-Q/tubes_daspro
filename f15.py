@@ -26,4 +26,4 @@ def load (nama_folder):
     kepemilikan = csv_to_arr('kepemilikan',nama_folder)
     # output (cetak ke layar)
     print("Selamat datang di antarmuka", '"%s"' % "Binomo")
-    return user,game,riwayat,kepemilikan   # mengembalikan array
+    return user,game,riwayat,kepemilikan  # mengembalikan array

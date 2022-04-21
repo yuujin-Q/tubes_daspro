@@ -1,0 +1,51 @@
+NOTASI ALGORITMIK
+
+procedure search_my_game (input user_inventory : array of array of string)
+{ I.S. input id dan tahun rilis game yang ingin dicari }
+{ F.S. output data game tersebut }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        common.iterLength(iterable: string or array) -> integer
+        common.alignTable(input/output arr : array of array of string)
+        common.arr_to_str(arr : array; delim : string) -> string
+    { VARIABEL }
+        user_inventory : array of array of string
+        id_game, tahun_rilis : string
+        count : int
+        id, tahun: boolean
+        i, j : integer
+        search_result : array of array of string 
+
+ALGORITMA
+    input(id_game,tahun_rilis)
+    output()
+    output("Daftar game pada inventory-mu yang memenuhi kriteria:")
+        
+    if id_game = '' then       { jika id_game kosong }
+        id <- True
+    else
+        id <- False
+    if tahun_rilis = '' then   { jika tahun_rilis kosong }
+        tahun <- True
+    else
+        tahun <- False
+
+    { search }
+    count <- 0
+    search_result <- []      { array hasil pencarian }
+    i traversal [1..common.iterLength(user_inventory)]
+        if id and tahun then   { jika input kedua parameter kosong }
+            count <- count + 1
+            search_result <- search_result + [user_inventory[i]]
+        else       { setidaknya satu input tidak kosong }
+            if (id_game = user_inventory[i][0] and tahun) or (tahun_rilis = user_inventory[i][4] and id) or (id_game = user_inventory[i][0] and tahun_rilis = user_inventory[i][4]) then
+                count <- count + 1
+                search_result <- search_result + [user_inventory[i]]
+    { output }
+    if count = 0 then   { tidak ada game }
+        output("Tidak ada game pada inventory-mu yang memenuhi kriteria")
+    else      { minimal ada satu game }
+        search_result <- common.alignTable(search_result)        { menyejajarkan posisi string dalam array }
+        i traversal [1..common.iterLength(search_result)]
+            output(f'{i}. ' + common.arr_to_str(search_result[i],' | '))   { output dalam bentuk tabel yang sudah rapi }

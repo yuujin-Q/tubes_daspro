@@ -25,7 +25,7 @@ def writecsv (arr,folder,filename):
     csvdat.write(str)   # menuliskan array yang sudah diubah menjadi string ke dalam csv
     csvdat.close()   # menutup file csv
     
-def save (user,game,kepemilikan,riwayat):
+def save (user,game,riwayat,kepemilikan):
     # Spesifikasi : Menyimpan data user, game, kepemilikan, dan riwayat ke folder yang diinginkan
     # KAMUS LOKAL
         # folder, path : string

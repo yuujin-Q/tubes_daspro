@@ -1,23 +1,36 @@
-# # direvisi kalo register dah jadi;
+'''
+MODUL F03-LOGIN
+Spesifikasi: User dapat login dengan memasukkan username dan password.
+I.S. : input username, password
+F.S. : 
 
-# import f_csvparser
+Desainer dan coder : 16521262
+'''
 
-# file = csv_arr("user.csv")
-# for i in range(len(file)):
-#     file[i] = self_split(file[i],";")
+import f_common as common
 
-# def login(x):
-#     file = x
-#     terdaftar = False
-#     username = ""
-#     while terdaftar==False:
-#         username = input("Masukan username: ")
-#         password = input("Masukan password: ")
-#         encry_password = encrypt(password)
-#         for row in file:
-#             if username == row[1] and password == row[4]:
-#                 print("Halo " + nama + "! " + "Selamat datang di "Binomo".")
-#                 terdaftar = True       
-#         if terdaftar == False:
-#             print("Password atau username salah atau tidak ditemukan.")
-#     return username
+def login(datauser):
+    # SPESIFIKASI: memeriksa username dan password user
+    # KAMUS LOKAL
+        # i : integer
+        # common.iterLength(iterable : string or array) -> integer
+    
+    # ALGORITMA
+    username = input("Masukkan username: ")
+    password = input("Masukkan password: ")
+
+    # mencari data user
+    found = False
+    for i in range(1, common.iterLength(datauser)):
+        # apabila username ditemukan dan sesuai dengan passwordnya
+        if username == datauser[i][1] and password == datauser[i][3]:
+            print("Halo " + datauser[i][2] + "! Selamat datang di " + '"%s"' % "Binomo" + ".")
+            found = True
+            user_id = int(datauser[i][0])
+
+    # apabila username tidak ditemukan atau username & password tidak cocok
+    if found == False:
+        print("Password atau username salah atau tidak ditemukan.")
+        user_id = -1
+    
+    return found,user_id

@@ -34,5 +34,5 @@ def register (user):
         elif i == (common.iterLength(user)-1):
             # username belum terpakai
             print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
-            user += [[str(common.iterLength(user)-1),username,nama,password,'user','0']] # menambahkan data user baru ke array user
+            user += [[str(common.iterLength(user)),username,nama,password,'User','0']] # menambahkan data user baru ke array user
     return user

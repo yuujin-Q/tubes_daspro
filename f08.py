@@ -21,7 +21,7 @@ import f_common as common
 import datetime
 
 # REALISASI FUNGSI
-def buy_game (user,game,kepemilikan,riwayat,user_inventory,user_id):
+def buy_game (user,game,riwayat,kepemilikan,user_inventory,user_id):
     id_game = input("Masukkan ID Game: ")   # input dari pengguna
     
     # mencari id game di game.csv
@@ -38,10 +38,11 @@ def buy_game (user,game,kepemilikan,riwayat,user_inventory,user_id):
                     print("Game " + '"%s"' % id_game + " berhasil dibeli!")
                     kepemilikan += [[id_game,str(user_id)]]   # menambahkan data game ke kepemilikan
                     riwayat += [[id_game,game[i][1],game[i][4],str(user_id),datetime.date.today().year]]   # menambahkan data game ke riwayat
+                    game[i][5] -= 1   # kurangi stok sebanyak 1 buah
                 else:   # jika saldo user tidak cukup
                     print("Saldo anda tidak cukup untuk membeli Game tersebut!")
-            elif id_game == game[i][0]:   # jika stoknya nol (0)
+            elif id_game == game[i][0]:   # and int(game[i][5] <= 0)  --- jika stoknya nol (0)
                 print("Stok Game tersebut sedang habis!")
                 break
             
-    return kepemilikan, riwayat
+    return game,riwayat,kepemilikan
