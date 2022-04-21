@@ -64,118 +64,89 @@ if args.folder != '':
         user,game,riwayat,kepemilikan= f15.load(args.folder)
 
         # meminta perintah
+        funcs = ['login', 'register', 'tambah_game', 'ubah_game', 
+        'ubah_stok', 'list_game_toko', 'buy_game', 'list_game', 
+        'search_my_game', 'search_game_at_store','topup','riwayat',
+        'help','save','exit']
         call_func = False
         logged_in = False
+        user_role=''
         while not call_func:
             functions = input(">>> ")
-        
-            if functions == 'login' and not logged_in:   # f03.login(user)
-                logged_in,user_id = f03.login(user)
-            elif logged_in:
+
+            for i in range(common.iterLength(funcs)):
+                if funcs[i] == functions:
+                    validfunc = True
+                    break
+                else:
+                    validfunc = False
+
+            if functions == 'login':   # f03.login(user)
+                if not logged_in:
+                    logged_in,user_id = f03.login(user)
+                    user_role = user[user_id][4]
+                else:
+                    print("Halo " + user[user_id][2] + "! Selamat datang di " + '"%s"' % "Binomo" + ".")
+            
+            elif functions=='help':     # f14
+                f14.Help(user_role)
+            
+            elif functions=='exit':     # f17
+                call_func=f17.bnmo_exit(user,game,riwayat,kepemilikan)
+
+            elif logged_in and validfunc:
                 userinventory = common.create_inventory_arr(kepemilikan, game, user_id)
                 tokogame = common.create_tokogame_arr(game)
                 userhistory = common.create_userhistory_arr(riwayat, user_id)
                 
-                if user[user_id][4]=='Admin':   # admin
-                    isAdmin = True
-                else: # User
-                    isAdmin = False
-                
-                if functions == 'register' and isAdmin:     # f02
+                if functions == 'register' and user_role=='Admin':     # f02
                     user = f02.register(user)
             
-                elif functions=='tambah_game' and isAdmin:    # f04
+                elif functions=='tambah_game' and user_role=='Admin':    # f04
                     game = f04.tambah_game(game)
                 
-                elif functions=='ubah_game'and isAdmin:     # f05
+                elif functions=='ubah_game'and user_role=='Admin':     # f05
                     game = f05.ubah_game(game)
                 
-                elif functions=='ubah_stok'and isAdmin:     # f06
+                elif functions=='ubah_stok'and user_role=='Admin':     # f06
                     game = f06.ubah_stok(game)
                 
                 elif functions=='list_game_toko':     # f07
                     f07.list_game_toko(tokogame)
                 
-                elif functions=='buy_game' and not isAdmin:     # f08
+                elif functions=='buy_game' and user_role=='User':     # f08
                     game,riwayat,kepemilikan=f08.buy_game(user,game,riwayat,kepemilikan,userinventory,user_id)
                 
-                elif functions=='list_game' and not isAdmin:     # f09
+                elif functions=='list_game' and user_role=='User':     # f09
                     f09.list_game(userinventory)
 
-                elif functions=='search_my_game' and not isAdmin:     # f10
+                elif functions=='search_my_game' and user_role=='User':     # f10
                     f10.search_my_game(userinventory)
 
                 elif functions=='search_game_at_store':     # f11
                     f11.search_game_at_store(tokogame)
                 
-                elif functions=='topup' and isAdmin:     # f12
+                elif functions=='topup' and user_role=='Admin':     # f12
                     user = f12.topup(user)
                 
-                elif functions=='riwayat' and not isAdmin:     # f13
+                elif functions=='riwayat' and user_role=='User':     # f13
                     f13.riwayat(user_id,userhistory, kepemilikan)
-
-                elif functions=='help':     # f14
-                    f14.Help(user_id)
 
                 elif functions=='save':     # f16
                     f16.save(user,game,riwayat,kepemilikan)
-               
-                elif functions=='exit':     # f17
-                    call_func=f17.bnmo_exit(user,game,riwayat,kepemilikan)
-
-                elif functions=='login':
-                    print("Halo " + user[user_id][2] + "! Selamat datang di " + '"%s"' % "Binomo" + ".")
-
+                               
                 else:
-                    if isAdmin:
+                    if user_role=='Admin':
                         print("Maaf, anda harus menjadi user untuk melakukan hal tersebut.")
                     else:
                         print("Maaf, anda tidak memiliki izin untuk menjalankan perintah berikut. Mintalah ke administrator untuk melakukan hal tersebut.")
-
-            elif functions=='exit':     # f17
-                call_func=f17.bnmo_exit(user,game,riwayat,kepemilikan)
                     
             else: # kalau belum login, hanya bisa panggil perintah login saja
-                print("Maaf, anda harus login terlebih dahulu untuk mengirim perintah selain", '"%s"' % "login")
-
+                if validfunc:
+                    print("Maaf, anda harus login terlebih dahulu untuk mengirim perintah selain", '"%s"' % "login")
+                else:
+                    print('Perintah tidak valid. Ketik "help" untuk membaca panduan')
 else:
     print("Tidak ada nama folder yang diberikan!")
     print('Usage: python bnmo_main.py <nama_folder>')
 
-        
-        
-        
-        
-        
-
-
-
-# tes
-#kepemilikan = csvparser.csv_to_arr('kepemilikan', 'save0')
-#game = csvparser.csv_to_arr('game', 'save0')
-#riwayat = csvparser.csv_to_arr('riwayat', 'save0')
-#user = csvparser.csv_to_arr('user', 'save0')
-
-#while True:
-#    f17.bnmo_exit(user,game,kepemilikan,riwayat)
-
-#userinventory = common.create_inventory_arr(kepemilikan, game, 0) # admin id 0
-#tokogame = common.create_tokogame_arr(game)
-#userhistory = common.create_userhistory_arr(riwayat, 0)
-#sebelum
-#print('sebelum')
-#for i in range(1, common.iterLength(user)):
-#    print(user[i])
-#print()
-
-#print('hasil penambahan')
-#user = f12.topup(user)
-#for i in range(1, common.iterLength(user)):
-#    print(user[i])
-#for i in range(common.iterLength(userhistory)):
-#   print(userhistory[i])
-#print()
-
-#f08.beli_game(user,game,kepemilikan,riwayat,userinventory,0)
-
-# f09.list_game(userinventory)

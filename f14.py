@@ -2,14 +2,13 @@
 
 
 def Help(user_role): 
-    if not logged_in:  #blm log in
+    if user_role=='':  #blm log in
         print("===========HELP===========")
-        print("1. register - Untuk melakukan registrasi user baru" )
-        print("2. login - Untuk melakukan login ke dalam sistem")
-        print("3. help - Untuk memberikan panduan penggunaan sistem")
-        print("4. exit - Untuk keluar dari aplikasi")
+        print("1. login - Untuk melakukan login ke dalam sistem")
+        print("2. help - Untuk memberikan panduan penggunaan sistem")
+        print("3. exit - Untuk keluar dari aplikasi")
     else: #sudah log in
-        if isAdmin: #admin
+        if user_role=='Admin': #admin
             print("===========HELP===========")
             print("1. register - Untuk melakukan registrasi user baru" )
             print("2. login - Untuk melakukan login ke dalam sistem")
@@ -31,6 +30,6 @@ def Help(user_role):
             print("5. search_my_game - Untuk mencari game yang dimiliki user")
             print("6. search_game_at_store - Untuk mencari game yang terdapat di toko")     
             print("7. riwayat - Untuk melihat riwayat pembelian game")
-            print("8. Help - Untuk memberikan panduan penggunaan sistem")    
+            print("8. help - Untuk memberikan panduan penggunaan sistem")    
             print("9. save - Untuk melakukan penyimpanan data ke dalam file setelah dilakukan perubahan")
             print("10. exit - Untuk keluar dari aplikasi")
