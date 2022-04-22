@@ -41,8 +41,10 @@ def buy_game (user,game,riwayat,kepemilikan,user_inventory,user_id):
                     game[i][5] -= 1   # kurangi stok sebanyak 1 buah
                 else:   # jika saldo user tidak cukup
                     print("Saldo anda tidak cukup untuk membeli Game tersebut!")
-            elif id_game == game[i][0]:   # and int(game[i][5] <= 0)  --- jika stoknya nol (0)
+            elif id_game == game[i][0] and int(game[i][5] <= 0):  # jika stoknya nol (0)
                 print("Stok Game tersebut sedang habis!")
                 break
+            elif id_game != game[i][0] and i == (common.iterLength(game)-1):   # jika tidak ada id game yang cocok (tidak ditemukan pada game)
+                print("Game tidak ditemukan.")
             
     return game,riwayat,kepemilikan

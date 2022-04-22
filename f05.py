@@ -42,4 +42,7 @@ def ubah_game(game):
                 game[i][3] = tahun_rilis    # maka gantikan elemen tahun rilis game dengan input dari pengguna
             if harga != '':                 # jika input harga game tidak kosong
                 game[i][4] = harga          # maka gantikan elemen harga game dengan input dari pengguna
+        else:
+            if i == (common.iterLength(game)-1):
+                print("ID game tidak ditemukan.")
     return game
