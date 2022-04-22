@@ -1,5 +1,28 @@
 NOTASI ALGORITMIK
 
+function validasiRegis (strings : string) -> boolean
+{ Mengeluarkan nilai true jika input valid, yaitu hanya terdiri dari huruf, angka, underscore, atau strip.
+Mengeluarkan nilai false jika input tidak valid }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        common.iterLength (iterable: string or array) -> integer
+        ord (strings : string) -> integer   { menghasilkan padanan ASCII dari tiap karakter }
+    { VARIABEL }
+        length : integer
+        i : integer
+        x : integer
+
+ALGORITMA
+    length <- common.iterLength(strings)
+    i traversal [1..length]
+        x <- ord(strings[i])
+        if not ((x >= ord('a') and x <= ord('z')) or (x >= ord('A') and x<= ord('Z')) or (x>=ord('0') and x<=ord('9')) or x == ord('_') or x == ord('-')) then
+            -> False
+    -> True
+
+
+
 function register (user : array of array of string) -> array of array of string
 { Mendaftarkan pengguna baru oleh Admin }
 
@@ -9,18 +32,20 @@ KAMUS LOKAL
     { VARIABEL }
         nama, username, password : string
         i : int
-        
+
 ALGORITMA
     input(nama,username,password)
-    { username telah terpakai }
-    i traversal [1..common.iterLength(user)]
-        if username = user[i][1] then
-            { username sudah terpakai }
-            output("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
-            break
-        else if i = (common.iterLength(user)-1) then
-            { username belum terpakai }
-            output("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
-            { menambahkan data user baru ke array user }
-            user <- user + [[str(common.iterLength(user)-1),username,nama,password,'user','0']] 
-    -> user
+    { cek apakah username terpakai }
+    if nama != '' and username!= '' and password!='' and validasiRegis(username) then
+        i traversal [1..common.iterLength(user)]
+            if username = user[i][1] then
+                { username sudah terpakai }
+                output("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
+                break
+            else if (i = (common.iterLength(user)-1)) then
+                { username belum terpakai }
+                output("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
+                user <- user + [[str(common.iterLength(user)),username,nama,password,'User','0']]   { menambahkan data user baru ke array user }
+        -> user
+    else
+        output("Masukan tidak valid.")

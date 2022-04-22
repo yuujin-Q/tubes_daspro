@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="wxAlzM6GobpBu3EBlrAf" name="Dekomposisi berdasarkan role">
-        <mxGraphModel dx="986" dy="821" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="2760" dy="1292" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -194,7 +194,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="yZdyE0BTcisY-PstfGi8" name="F02">
-        <mxGraphModel dx="690" dy="575" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="418" dy="196" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="SBcsvIYYiJXPloKk3Q9L-0"/>
                 <mxCell id="SBcsvIYYiJXPloKk3Q9L-1" parent="SBcsvIYYiJXPloKk3Q9L-0"/>
@@ -279,7 +279,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="RIjMqtAqedvdz5oG-lGK" name="F03">
-        <mxGraphModel dx="690" dy="575" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="575" dy="269" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="_mG66kF83YpA8wfjYNvI-0"/>
                 <mxCell id="_mG66kF83YpA8wfjYNvI-1" parent="_mG66kF83YpA8wfjYNvI-0"/>
@@ -355,7 +355,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="Xwd7mY2441P3FIpXFi3U" name="F04">
-        <mxGraphModel dx="1165" dy="676" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="690" dy="323" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="Swh0pJ4D5cBUGqY8b_GR-0"/>
                 <mxCell id="Swh0pJ4D5cBUGqY8b_GR-1" parent="Swh0pJ4D5cBUGqY8b_GR-0"/>
@@ -454,7 +454,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="n9Na3bkffQQknkfWHDF2" name="F05">
-        <mxGraphModel dx="990" dy="575" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="986" dy="461" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="XduCuKOVXgxRyF3U87lP-0"/>
                 <mxCell id="XduCuKOVXgxRyF3U87lP-1" parent="XduCuKOVXgxRyF3U87lP-0"/>

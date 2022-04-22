@@ -19,8 +19,10 @@ ALGORITMA
         arr_id <- arr_id + [game[i][0]]
 
     { cari id game }
+    found <- false
     i traversal [1..common.iterLength(game)]
         if id_game = arr_id[i] then
+            found <- true
             if nama_game != '' then             { jika input nama game tidak kosong }
                 game[i][1] <- nama_game         { maka gantikan elemen nama game dengan input dari pengguna }
             if kategori != '' then              { jika input kategori game tidak kosong }
@@ -29,4 +31,6 @@ ALGORITMA
                 game[i][3] <- tahun_rilis       { maka gantikan elemen tahun rilis game dengan input dari pengguna }
             if harga != '' then                 { jika input harga game tidak kosong }
                 game[i][4] <- harga             { maka gantikan elemen harga game dengan input dari pengguna }
+    if found = false then
+        output("ID game tidak ditemukan.")
     -> game

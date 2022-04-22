@@ -32,8 +32,10 @@ def ubah_game(game):
     arr_id = [game[i][0] for i in range (common.iterLength(game))]    
     
     # cari id game
+    found = False
     for i in range (common.iterLength(game)):
         if id_game == arr_id[i]:
+            found = True
             if nama_game != '':             # jika input nama game tidak kosong
                 game[i][1] = nama_game      # maka gantikan elemen nama game dengan input dari pengguna
             if kategori != '':              # jika input kategori game tidak kosong
@@ -42,7 +44,6 @@ def ubah_game(game):
                 game[i][3] = tahun_rilis    # maka gantikan elemen tahun rilis game dengan input dari pengguna
             if harga != '':                 # jika input harga game tidak kosong
                 game[i][4] = harga          # maka gantikan elemen harga game dengan input dari pengguna
-        else:
-            if i == (common.iterLength(game)-1):
-                print("ID game tidak ditemukan.")
+    if not found:
+        print("ID game tidak ditemukan.")
     return game

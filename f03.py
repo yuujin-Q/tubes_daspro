@@ -28,9 +28,13 @@ def login(datauser):
             found = True
             user_id = int(datauser[i][0])
 
-    # apabila username tidak ditemukan atau username & password tidak cocok
-    if found == False:
-        print("Password atau username salah atau tidak ditemukan.")
+    if not found:
+        if username =='' or password =='':
+            print("Anda belum memasukkan username dan/atau password!")
+        else:
+            print('Password atau username salah atau tidak ditemukan.')
         user_id = -1
+
+    # apabila username tidak ditemukan atau username & password tidak cocok
     
     return found,user_id

@@ -18,6 +18,20 @@ Desainer dan coder : 16521172
 # import modul yang diperlukan
 import f_common as common
 
+def validasiRegis(strings):
+    # Spesifikasi : validasi input string yang terbatas alphabet, numerik, underscore, dan strip
+    # KAMUS LOKAL
+    # nama, username, password : string
+    # i : int
+    # ALGORITMA
+    length = common.iterLength(strings)
+    for i in range(length):
+        x = ord(strings[i])
+        if not ((x >= ord('a') and x <= ord('z')) or (x >= ord('A') and x<= ord('Z')) or (x>=ord('0') and x<=ord('9')) or x == ord('_') or x == ord('-')):
+            return False
+    return True
+
+
 # realisasi fungsi
 def register (user):
     # input nama, username, dan password
@@ -26,13 +40,16 @@ def register (user):
     password = input("Masukkan password: ")
     
     # cek apakah username terpakai
-    for i in range(common.iterLength(user)):
-        if username == user[i][1]:
-            # username sudah terpakai
-            print("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
-            break
-        elif i == (common.iterLength(user)-1):
-            # username belum terpakai
-            print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
-            user += [[str(common.iterLength(user)),username,nama,password,'User','0']] # menambahkan data user baru ke array user
-    return user
+    if nama != '' and username!= '' and password!='' and validasiRegis(username):
+        for i in range(common.iterLength(user)):
+            if username == user[i][1]:
+                # username sudah terpakai
+                print("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
+                break
+            elif i == (common.iterLength(user)-1):
+                # username belum terpakai
+                print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
+                user += [[str(common.iterLength(user)),username,nama,password,'User','0']] # menambahkan data user baru ke array user
+        return user
+    else:
+        print("Masukan tidak valid.")

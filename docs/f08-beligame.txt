@@ -22,20 +22,26 @@ ALGORITMA
             { jika game sudah pernah dibeli (ada di user_inventory) }
             output("Anda sudah memiliki Game tersebut")
             found <- True   { game ditemukan }
-    
+
+    foundgame <- false   { definisikan boolean game belum ditemukan di toko }
     if found = False then
         { jika game belum pernah dibeli (tidak ada di user_inventory) }
         i traversal [2..common.iterLength(game)]
             if id_game = game[i][0] and int(game[i][5])>0 then
+                foundgame <- true
                 { mencari id game dan jika stok game > 0 }
                 if int(common.remove_thousands(game[i][4])) <= int(user[user_id+1][5]) then
                     { jika saldo user cukup }
                     output("Game " + '"%s"' % id_game + " berhasil dibeli!")
                     kepemilikan <- kepemilikan + [[id_game,str(user_id)]]   { menambahkan data game ke kepemilikan }
-                    riwayat <- riwayat + [[id_game,game[i][1],game[i][4],str(user_id),datetime.date.today().year]]   { menambahkan data game ke riwayat }
+                    riwayat <- riwayat + [[id_game,game[i][1],game[i][4],str(user_id),str(datetime.date.today().year)]]   { menambahkan data game ke riwayat }
                 else   { jika saldo user tidak cukup }
                     output("Saldo anda tidak cukup untuk membeli Game tersebut!")
             else if id_game = game[i][0]:   { jika stoknya nol (0) }
+                foundgame <- true
                 output("Stok Game tersebut sedang habis!")
-                break      
+                break
+    if not foundgame and not found then
+        { jika game tidak ditemukan }
+        output("Game tidak ditemukan.")
     -> kepemilikan, riwayat

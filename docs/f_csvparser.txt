@@ -1,0 +1,38 @@
+NOTASI ALGORITMIK
+
+function csv_to_arr(filename,folder) -> array of array of string
+{mengembalikan sebuah array of array of string dari pembacaan sebuah file csv}
+
+KAMUS LOKAL
+    arr : array of array of string
+    filepath : string
+    file : SEQFILE of
+        (*) lines : array of string     {seluruh baris dalam file}
+        (1) ''
+    temprow : array of string
+    templine : string
+    strlen, j, i : integer
+
+    common.iterLength(iterable) -> integer
+    {fungsi untuk menghasilkan panjang string atau array}
+    common.strSplit(str, delimiter) -> array of string
+    {fungsi untuk menghasilkan array dengan memisahkan string berdasarkan delimiter}
+ALGORITMA
+    arr <- []
+    filepath <- '.\\saves\\' + folder + '\\' + filename + '.csv'
+
+    assign(filepath, file)
+    open(file,lines)
+    
+    j traversal [0..common.iterLength(lines)-1]
+        temprow <- []
+        templine <- ''
+        strlen <- common.iterLength(line)
+        i traversal [0..strlen-1]   {menghapus escape character \n}
+            if i < strlen
+                if line[i] = '\n'
+                    break
+            templine <- templine + line[i]
+        temprow <- common.strSplit(templine, ';')
+        arr <- arr + [temprow]
+    -> arr

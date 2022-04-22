@@ -6,7 +6,7 @@
 # alignTable(arr)       mengembalikan arr (array of array) yang lebar kolomnya disamakan dengan penambahan spasi ' '
 # create_inventory_arr(kepemilikan, game, userid)   menghasilkan array yang berisi data kepemilikan (inventory game)
 # create_tokogame_arr(game)     menghasilkan array yang berisi data game di toko
-# 
+# create_userhistory_arr(riwayat, userid)
 # remove_thousands(numstr)      menghasilkan string numerik dari string numerik yang memiliki pemisah ribuan '.'
 # ...
 

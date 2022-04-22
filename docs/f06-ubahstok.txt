@@ -1,0 +1,33 @@
+NOTASI ALGORITMIK
+
+function ubah_stok (game : array of array of string) -> array of array of string
+{ Mengubah stok game pada toko game dengan memasukkan data }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        common.iterLength(iterable: string or array) -> integer
+    { VARIABEL }
+        id_game : string
+        i, jumlah: integer
+        
+ALGORITMA
+    input(id_game)
+    { ubah stok }
+    i traversal [1..common.iterLength(game)]
+        if id_game = game[i][0] then       { jika id game ditemukan, maka minta input jumlah perubahan stok }
+            input(jumlah)
+
+            { cari data melalui id game }
+            if jumlah>=0 then   { penambahan stok }
+                game[i][5] <- str(int(game[i][5]) + jumlah)
+                output("Stok game " + game[i][1] + " berhasil ditambahkan. Stok sekarang: " + game[i][5])
+            else         { pengurangan stok }
+                if int(game[i][5]) >= (-1)*jumlah then      { hasil pengurangan valid (tidak negatif) }
+                    game[i][5] <- str(int(game[i][5]) + jumlah)
+                    output("Stok game " + game[i][1] + " berhasil dikurangi. Stok sekarang: " + game[i][5])
+                else                                   { hasil pengurangan tidak valid (negatif) }
+                    output("Stok game " + game[i][1] + " gagal dikurangi karena stok kurang. Stok sekarang: " + game[i][5])
+            break
+        else if (i = (common.iterLength(game)-1)) then      { jika id game tidak ditemukan }
+            output("Tidak ada game dengan ID tersebut!")
+    -> game

@@ -31,20 +31,23 @@ def buy_game (user,game,riwayat,kepemilikan,user_inventory,user_id):
             print("Anda sudah memiliki Game tersebut")
             found = True   # game ditemukan
     
+    foundgame = False   # definisikan boolean game belum ditemukan di toko
     if found == False:   # jika game belum pernah dibeli (tidak ada di user_inventory)
         for i in range (1,common.iterLength(game)):   # cek game.csv
             if id_game == game[i][0] and int(game[i][5])>0:   # mencari id game dan jika stok game > 0
-                if int(common.remove_thousands(game[i][4])) <= int(user[user_id+1][5]):   # jika saldo user cukup
+                foundgame = True   # game ditemukan
+                if int(common.remove_thousands(game[i][4])) <= int(user[user_id][5]):   # jika saldo user cukup
                     print("Game " + '"%s"' % id_game + " berhasil dibeli!")
                     kepemilikan += [[id_game,str(user_id)]]   # menambahkan data game ke kepemilikan
-                    riwayat += [[id_game,game[i][1],game[i][4],str(user_id),datetime.date.today().year]]   # menambahkan data game ke riwayat
-                    game[i][5] -= 1   # kurangi stok sebanyak 1 buah
+                    riwayat += [[id_game,game[i][1],game[i][4],str(user_id),str(datetime.date.today().year)]]   # menambahkan data game ke riwayat
+                    game[i][5] = str(int(game[i][5])-1)    # kurangi stok sebanyak 1 buah
                 else:   # jika saldo user tidak cukup
                     print("Saldo anda tidak cukup untuk membeli Game tersebut!")
-            elif id_game == game[i][0] and int(game[i][5] <= 0):  # jika stoknya nol (0)
+            elif id_game == game[i][0] and int(game[i][5]) <= 0:  # jika stoknya nol (0)
+                foundgame = True   # game ditemukan
                 print("Stok Game tersebut sedang habis!")
                 break
-            elif id_game != game[i][0] and i == (common.iterLength(game)-1):   # jika tidak ada id game yang cocok (tidak ditemukan pada game)
-                print("Game tidak ditemukan.")
+    if not foundgame and not found:   # jika game tidak ditemukan
+        print("Game tidak ditemukan.")
             
     return game,riwayat,kepemilikan

@@ -18,15 +18,15 @@ def riwayat(user_id, userhistory, kepemilikan):
     # mengecek apakah user memiliki game (pernah melakukan pembelian)
     ada_riwayat = False
     for i in range(common.iterLength(kepemilikan)):
-        if user_id == kepemilikan[i][1]:
+        if str(user_id) == kepemilikan[i][1]:
             ada_riwayat = True
     
     # jika user tidak memiliki game (belum pernah melakukan pembelian)
-    if ada_riwayat == False:
+    if ada_riwayat is False:
         print("Maaf, kamu tidak ada riwayat pembelian game. Ketik perintah beli_game untuk membeli.")
     
     #jika user pernah melakukan pembelian
-    if ada_riwayat == True:
+    else:
         # mengeluarkan output berupa list game yang dimiliki user
         print("Daftar game: ")
         userhistory = common.alignTable(userhistory)    # merapikan string dalam array

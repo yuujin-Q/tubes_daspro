@@ -1,6 +1,6 @@
 '''
 MODUL F15-LOAD
-Spesifikasi: Admin dapat mendaftarkan pengguna baru
+Spesifikasi: Menjalankan program dan load data
 I.S. : Program belum dijalankan
 F.S. : Data di-load
 Desainer dan coder : 16521172, 16521199

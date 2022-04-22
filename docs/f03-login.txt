@@ -1,0 +1,29 @@
+
+function login(datauser: array) -> array of string
+{ SPESIFIKASI: memeriksa username dan password user }
+KAMUS LOKAL
+i : integer
+common.iterLength(iterable : string or array) -> integer
+    
+ALGORITMA
+    input(username, password)
+
+    {mencari data user}
+    found <- False
+    i traversal [1..common.iterLength(datauser)]
+        {apabila username ditemukan dan sesuai dengan passwordnya}
+        if username = datauser[i][1] and password = datauser[i][3] then
+            output("Halo " + datauser[i][2] + "! Selamat datang di " + '"%s"' % "Binomo" + ".")
+            found <- True
+            user_id <- int(datauser[i][0])
+
+    { apabila username tidak ditemukan atau username & password tidak cocok }
+    if not found:
+        if username ='' or password ='' then
+            output("Anda belum memasukkan username dan/atau password!")
+        else
+            output('Password atau username salah atau tidak ditemukan.')
+        user_id <- -1
+ 
+    
+    -> found, user_id

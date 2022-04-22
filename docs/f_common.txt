@@ -1,0 +1,16 @@
+NOTASI ALGORITMIK
+
+function iterLength (iterable : string) -> integer
+{ menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+
+KAMUS LOKAL
+    { VARIABEL }
+    i : integer
+
+ALGORITMA
+    i <- 0
+    while true do     { pengulangan dilakukan hingga terjadi error dalam mengakses iterable }
+        try:
+            i+=1   { jika tidak error, penghitung i diincrement }
+        catch iterable[i] is None     { jika error, fungsi diselesaikan }
+            -> i
