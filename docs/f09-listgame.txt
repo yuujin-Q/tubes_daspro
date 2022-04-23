@@ -6,8 +6,11 @@ procedure list_game (input,output user_inventory : array of array of string)
 KAMUS LOKAL 
   { FUNGSI DAN PROSEDUR }
   common.iterLength (iterable: string or array) -> integer
+  common.alignTable(input/output arr : array of array of string)
+  common.arr_to_str(arr : array; delim : string) -> string
   
   { VARIABEL }
+  user_inventory : array of array of string
   count : integer
   i : integer
 
