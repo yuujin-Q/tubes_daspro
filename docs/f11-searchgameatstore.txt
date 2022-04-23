@@ -1,9 +1,9 @@
-
+NOTASI ALGORITMIK 
 Mencari Game di Toko dari ID, Nama Game, Harga, Kategori dan Tahun Rilis
 I.S. : toko terdefinisi, input id, nama game, harga, kategori, tahun rilis yang ingin digunakan dalam pencarian
 F.S. : output data game hasil pencarian berdasarkan input
 
-function search_game_at_store(toko: array) -> array
+procedure search_game_at_store(toko: array) -> array
    { Melakukan pencarian game di toko oleh user dan admin }
   
 KAMUS LOKAL

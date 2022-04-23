@@ -41,6 +41,7 @@ def buy_game (user,game,riwayat,kepemilikan,user_inventory,user_id):
                     kepemilikan += [[id_game,str(user_id)]]   # menambahkan data game ke kepemilikan
                     riwayat += [[id_game,game[i][1],game[i][4],str(user_id),str(datetime.date.today().year)]]   # menambahkan data game ke riwayat
                     game[i][5] = str(int(game[i][5])-1)    # kurangi stok sebanyak 1 buah
+                    user[i][5] = str(int(user[i][5])-int(common.remove_thousands(game[i][4])))
                 else:   # jika saldo user tidak cukup
                     print("Saldo anda tidak cukup untuk membeli Game tersebut!")
             elif id_game == game[i][0] and int(game[i][5]) <= 0:  # jika stoknya nol (0)

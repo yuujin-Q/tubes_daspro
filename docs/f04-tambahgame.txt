@@ -6,7 +6,7 @@ function tambah_game (game : array of array of string) -> array of array of stri
 KAMUS LOKAL
 	nama_game, kategori, tahun_rilis, harga, stok_awal, id: string
 	last_id : integer
-	procedure iterLength(iterable : string or array) -> integer
+	common.iterLength(iterable : string or array) -> integer
 
 ALGORITMA
 	{ validasi input }
@@ -16,7 +16,7 @@ ALGORITMA
 		output("Mohon masukkan semua informasi mengenai game agar dapat disimpan BNMO.")
 
 	{ membuat id game }
-	last_id <- procedure iterLength(game : array)
+	last_id <- common.iterLength(game : array)
 	if (last_id < 100) then
 		id <- 'GAME0' + last_id
 	else

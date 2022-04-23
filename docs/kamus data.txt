@@ -1,0 +1,25 @@
+DESAIN KAMUS DATA
+    {apabila delimiter titik koma dan karakter akhir baris \n diabaikan, kamus data dapat dituliskan sebagai SEQFILE dari sebuah tipe}
+    type userDat : <id : string {numerik}; username : string {alphanumeric, dash, underscore}; nama, password : string; role : string {Admin or User}; saldo : string {numerik} >
+    type gameDat : <id : string {GAMEXXX<X sebagai angka>}; nama, kategori : string; tahun_rilis, harga, stok : string {numerik}>
+    type riwayatDat : <game_id, nama, harga : string; user_id, tahun_beli : string {numerik}>
+    type kepemilikanDat : <game_id : string; user_id : string {numerik}>
+
+    {string numerik pada keempat type di atas dapat juga digantikan dengan integer (atau real)}
+
+    usercsv :
+        SEQFILE of
+            (*) users : userDat
+            (1) ""
+    gamecsv :
+        SEQFILE of
+            (*) games : gameDat
+            (1) ""
+    riwayatcsv :
+        SEQFILE of
+            (*) history : riwayatdat
+            (1) ""
+    kepemilikancsv :
+        SEQFILE of
+            (*) ownership : kepemilikandat
+            (1) ""

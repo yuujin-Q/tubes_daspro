@@ -14,6 +14,6 @@ ALGORITMA
     while (not(choice = 'y' or choice='n')) do
         output("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n) ")
         input(choice)   {pada algoritma ini, asumsi input selalu lowercase}
-    if choice = 'y':
+    if choice = 'y'
         f16.save(user,game,kepemilikan,riwayat)
     -> True

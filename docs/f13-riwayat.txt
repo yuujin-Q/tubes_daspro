@@ -1,3 +1,4 @@
+NOTASI ALGORITMIK 
 
 procedure riwayat (input user_id : integer, input userhistory, kepemilikan : array of array of string, output userhistory : array of array of string)
 { I.S. Data riwayat dan kepemilikan masing-masing tersimpan pada array userhistory dan kepemilikan }

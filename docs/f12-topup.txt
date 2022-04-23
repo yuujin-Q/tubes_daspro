@@ -1,3 +1,4 @@
+NOTASI ALGORITMIK 
 
 function topup (datauser : array of array of string) -> array of array of string
 { menambahkan atau mengurangi saldo pada seorang user (role User) }
@@ -12,27 +13,27 @@ KAMUS LOKAL
     
 ALGORITMA 
 
-input(username)
-input(saldo)
+  input(username)
+  input(saldo)
 
-{pencarian username}
-usernamefound <- False
-i traversal [1..common.iterLength(datauser)-1]     {setidaknya ada 1 username (Admin)}
-  if datauser[i][1] == username then 
-    usernamefound <- True
-    userindex <- i
-    break
+  {pencarian username}
+  usernamefound <- False
+  i traversal [1..common.iterLength(datauser)-1]     {setidaknya ada 1 username (Admin)}
+    if datauser[i][1] == username then 
+      usernamefound <- True
+      userindex <- i
+      break
 
-{penambahan saldo}
-if usernamefound and datauser[userindex][4] == 'User' then
-  if int(datauser[userindex][5]) + int(saldo) < 0 then 
-    output("Masukan tidak valid")
+  {penambahan saldo}
+  if usernamefound and datauser[userindex][4] == 'User' then
+    if int(datauser[userindex][5]) + int(saldo) < 0 then 
+      output("Masukan tidak valid")
+    else
+      datauser[userindex][5] <- str(int(datauser[userindex][5]) + int(saldo))
+      output("Top up berhasil. Saldo " + username + " bertambah menjadi " + datauser[userindex][5])
   else
-    datauser[userindex][5] <- str(int(datauser[userindex][5]) + int(saldo))
-    output("Top up berhasil. Saldo " + username + " bertambah menjadi " + datauser[userindex][5])
-else
-  output('Username "'+ username + '" tidak ditemukan.')
+    output('Username "'+ username + '" tidak ditemukan.')
 
--> datauser
-    
-    
+  -> datauser
+
+

@@ -90,7 +90,7 @@ ALGORITMA
                 output(">>> ")
                 input(functions)
 
-                i traversal[0..common.iterLength(funcs)-1]
+                i traversal [0..common.iterLength(funcs)-1]
                     if (funcs[i] = functions) then
                         validfunc <- True
                         break

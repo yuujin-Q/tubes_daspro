@@ -35,6 +35,7 @@ ALGORITMA
                     output("Game " + '"%s"' % id_game + " berhasil dibeli!")
                     kepemilikan <- kepemilikan + [[id_game,str(user_id)]]   { menambahkan data game ke kepemilikan }
                     riwayat <- riwayat + [[id_game,game[i][1],game[i][4],str(user_id),str(datetime.date.today().year)]]   { menambahkan data game ke riwayat }
+                    user[i][5] <- str(int(user[i][5])-int(common.remove_thousands(game[i][4])))
                 else   { jika saldo user tidak cukup }
                     output("Saldo anda tidak cukup untuk membeli Game tersebut!")
             else if id_game = game[i][0] then   { jika stoknya nol (0) }

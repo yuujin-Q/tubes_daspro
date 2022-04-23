@@ -1,0 +1,117 @@
+SUBPROGRAM
+    F03_LOGIN
+        { I.S. : user belum melakukan login }
+        Masukkan Username dan Password
+        { F.S./I.S. : variabel username dan password terisi masukkan dari pengguna }
+        Validasi Username dan Password
+        { F.S Jika username dan password sesuai, maka pengguna dapat menjalankan
+            fungsi-fungsi yang ada di program berdasarkan rolenya }
+
+    F04_TAMBAH_GAME
+        { I.S. Program berjalan, pengguna adalah admin}
+        Masukkan informasi game
+        { F.S./I.S. : menerima masukan pengguna untuk informasi game yang akan ditambahkan }
+        Validasi kelengkapan informasi game
+        { F.S. Jika lengkap, array data ditambahkan ke memori, jika tidak, mengembalikan pesan error }
+
+    F05_UBAH_GAME
+        { I.S. Program berjalan, pengguna adalah admin}
+        Masukkan informasi perubahan game
+        { F.S./I.S. : menerima masukan admin untuk informasi game yang akan diubah }
+        Data game berubah
+        { F.S. Data game pada memori berubah sesuai input admin }
+
+    F06_UBAH_STOK
+        { I.S. Program berjalan, pengguna adalah admin }
+        Masukkan ID game dan jumlah penambahan atau pengurangan stok
+        { F.S./I.S. : menerima masukan admin untuk informasi stok game yang akan ditambah/dikurang }
+        Validasi input
+        { F.S. Jika sesuai, lanjut ke langkah berikutnya, jika tidak, mengembalikan pesan error }
+        Penambahan atau pengurangan stok game.
+        { F.S. Pengubahan stock pada array game jika memadai, gagal mengurangi dan mengembalikan
+            pesan error jika stok tidak memadai }
+
+    F07_LISTING_GAME
+        { I.S. Program berjalan, pengguna merupakan user atau admin }
+        Masukkan jenis skema sorting
+        { F.S./I.S. : menerima masukan admin untuk jenis sorting yang digunakan }
+        Validasi skema dan keluaran hasil
+        { F.S. list game terurut berdasarkan skema sorting jika valid, mengembalikan pesan error jika tidak }
+
+    F08_BELI_GAME
+        { I.S. Program berjalan, pengguna adalah user }
+        Masukkan ID game
+        { F.S./I.S. : menerima masukan admin untuk jenis sorting yang digunakan }
+        Pengecekan inventory, stok, dan saldo pengguna.
+        { F.S. Jika stok game, inventory, dan saldo user memadai, game berhasil dibeli,
+            array inventory diperbaharui, stok game dan saldo user berkurang. Jika tidak,
+            sistem mengembalikan pesan error sesuai kesalahan }
+
+    F09_LIST_GAME
+        { I.S. Array userinventory terdefinisi }
+        Mengecek data pada array userinventory
+        { F.S. Menampilkan data game yang dimiliki atau menampilkan pesan jika game tidak ditemukan}
+
+    F10_SEARCH_MY_GAME
+        { I.S. Array userinventory terdefinisi }
+        Meminta input id game dan tahun rilis
+        { F.S. Menampilkan data game yang dimiliki berdasarkan input atau menampilkan pesan jika game tidak ditemukan}
+
+    F11_SEARCH_GAME_AT_STORE
+        { I.S. Array tokogame terdefinisi }
+        Meminta input id game, nama game, harga, kategori, dan tahun rilis
+        { F.S. Menampilkan data game sesuai masukan ke layar atau menampilkan pesan jika game tidak ditemukan }
+
+    F12_TOPUP
+        { I.S. Array datauser terdefinisi }
+        Meminta input username dan jumlah saldo, lalu cari username pada array datauser
+        { F.S. Topup saldo jika masukan valid. Jika masukan valid, tidak ada perubahan saldo }
+
+    F13_RIWAYAT
+        { I.S. Array userhistory dan kepemilikan terdefinisi }
+        Cek apakah ada riwayat
+        { F.S./I.S. Tuliskan data riwayat jika ada atau tuliskan pesan jika tidak ada riwayat }
+
+    F14_HELP
+        { I.S. User role terdefinisi }
+        Mengecek role user
+        { F.S. Menampilkan menu fitur-fitur pada game sesuai role}
+
+    F15_LOAD
+        { I.S. Program belum dijalankan }
+        Menuliskan data pada file csv ke dalam bentuk array
+        { F.S./I.S. array user, game, kepemilikan, dan riwayat terisi }
+    F16_SAVE
+        { I.S. Data rpada array penyimpanan sementara pada program }
+        Meminta masukan nama folder tempat penyimpanan dan cek apakah folder ada atau tidak. jika tidak, buat folder
+        { F.S./I.S. Membuat dan/atau memetakan folder }
+        Tulis data dalam array ke dalam csv        
+        { F.S. Data tersimpan pada file csv }
+    F17_EXIT
+        { I.S. Program berjalan }
+        Meminta 
+        { F.S. Program berhenti / kel
+        { F.S./I.S. Data di-save atau data tidak di-save}
+        Keluar dari programuar }
+
+
+
+PROGRAM UTAMA
+    lakukan F15_LOAD
+    INPUT pilihan    {IS :.. pilihan sembarang; F.S: pilihan sesuai input pengguna}
+    pengulangan:
+        berdasarkan pilihan:
+            jika pilihan adalah F03_LOGIN dan belum login: F03_LOGIN
+                { I.S. : user belum melakukan login }
+                { F.S : Jika username dan password sesuai, 
+                maka pengguna dapat.menjalan fungsi-fungsi yang ada di program berdasarkan rolenya }
+            jika pilihan adalah F14_HELP: F14_HELP
+                {I.S : diketahui apabila pengguna sudah login dan rolenya atau pengguna belum login }
+                {F.S : panduan yang sesuai tercetak}
+            jika pilihan adalah F17_EXIT: F17_EXIT
+                {I.S : program masih berjalan; F.S : program berhenti}
+            jika pilihan lain dan sudah login:
+                eksekusi subprogram yang sesuai dengan pilihan {subprogram selain F03_LOGIN, F14_HELP, dan F17_EXIT}
+                {I.S : pilihan diketahui; F.S : pengguna berhasil mengeksekusi subprogram terpilih}
+            jika pilihan tidak valid: tampilkan pesan
+                {I.S : tidak ada pesan pada output; F.s: terdapat output pesan error}
