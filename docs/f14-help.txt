@@ -3,3 +3,41 @@
 procedure Help (input user_role : string, output : string)
 { I.S. Membaca role user }
 { F.S. Menampilkan bantuan fitur program ke layar }
+
+KAMUS LOKAL
+  user_role : string
+  
+ALGORITMA
+
+{belum login}
+if user_role=='' then 
+  output("===========HELP===========")
+  output("1. login - Untuk melakukan login ke dalam sistem")
+  output("2. help - Untuk memberikan panduan penggunaan sistem")
+  output("3. exit - Untuk keluar dari aplikasi")
+else {sudah login}
+  if user_role=='Admin' then {admin}
+    output("===========HELP===========")
+    output("1. register - Untuk melakukan registrasi user baru" )
+    output("2. login - Untuk melakukan login ke dalam sistem")
+    output("3. tambah_game - Untuk menambah game yang dijual pada toko")
+    output("4. ubah_game - Untuk mengubah game pada toko game")
+    output("5. ubah_stok - Untuk mengubah stok sebuah game pada toko")
+    output("6. list_game_toko - Untuk melihat list game yang dijual pada toko")
+    output("7. search_game_at_store - Untuk mencari game yang terdapat di toko")
+    output("8. topup - Untuk menambahkan saldo kepada user")
+    output("9. help - Untuk memberikan panduan penggunaan sistem")
+    output("10. save - Untuk melakukan penyimpanan data ke dalam file setelah dilakukan perubahan")
+    output("11. exit - Untuk keluar dari aplikasi")
+  else {user}
+    output("===========HELP===========")
+    output("1. login - Untuk melakukan login ke dalam sistem ")
+    output("2. list_game_toko - Untuk melihat list game yang dijual pada toko")
+    output("3. buy_game - Untuk membeli game yang dijual")
+    output("4. list_game - Untuk memberikan daftar game yang dimiliki user")
+    output("5. search_my_game - Untuk mencari game yang dimiliki user")
+    output("6. search_game_at_store - Untuk mencari game yang terdapat di toko")     
+    output("7. riwayat - Untuk melihat riwayat pembelian game")
+    output("8. help - Untuk memberikan panduan penggunaan sistem")    
+    output("9. save - Untuk melakukan penyimpanan data ke dalam file setelah dilakukan perubahan")
+    output("10. exit - Untuk keluar dari aplikasi")
