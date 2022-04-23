@@ -13,7 +13,7 @@ KAMUS LOKAL
 ALGORITMA
     input(id_game)
     { ubah stok }
-    i traversal [1..common.iterLength(game)]
+    i traversal [0..common.iterLength(game)-1]
         if id_game = game[i][0] then       { jika id game ditemukan, maka minta input jumlah perubahan stok }
             input(jumlah)
 

@@ -1,6 +1,6 @@
 NOTASI ALGORITMIK
 
-function register (game : array of array of string) -> array of array of string
+function ubah_game (game : array of array of string) -> array of array of string
 { Mengubah game pada toko game dengan memasukkan data }
 
 KAMUS LOKAL
@@ -15,12 +15,12 @@ ALGORITMA
     input(id_game, nama_game, kategori, tahun_rilis, harga)
     
     { membuat array berisi id game }
-    i traversal [1..common.iterLength(game)]
+    i traversal [0..common.iterLength(game)-1]
         arr_id <- arr_id + [game[i][0]]
 
     { cari id game }
     found <- false
-    i traversal [1..common.iterLength(game)]
+    i traversal [0..common.iterLength(game)-1]
         if id_game = arr_id[i] then
             found <- true
             if nama_game != '' then             { jika input nama game tidak kosong }

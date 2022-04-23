@@ -17,17 +17,17 @@ ALGORITMA
 
     { mencari id game di game.csv }
     found <- False
-    i traversal [1..common.iterLength(user_inventory)]
-        if id_game = user_inventory[i][0] then
+    i traversal [0..common.iterLength(user_inventory)-1]
+        if (id_game = user_inventory[i][0]) then
             { jika game sudah pernah dibeli (ada di user_inventory) }
             output("Anda sudah memiliki Game tersebut")
             found <- True   { game ditemukan }
 
     foundgame <- false   { definisikan boolean game belum ditemukan di toko }
-    if found = False then
+    if (found = False) then
         { jika game belum pernah dibeli (tidak ada di user_inventory) }
-        i traversal [2..common.iterLength(game)]
-            if id_game = game[i][0] and int(game[i][5])>0 then
+        i traversal [1..common.iterLength(game)-1]
+            if (id_game = game[i][0] and int(game[i][5])>0)then
                 foundgame <- true
                 { mencari id game dan jika stok game > 0 }
                 if int(common.remove_thousands(game[i][4])) <= int(user[user_id+1][5]) then
@@ -37,7 +37,7 @@ ALGORITMA
                     riwayat <- riwayat + [[id_game,game[i][1],game[i][4],str(user_id),str(datetime.date.today().year)]]   { menambahkan data game ke riwayat }
                 else   { jika saldo user tidak cukup }
                     output("Saldo anda tidak cukup untuk membeli Game tersebut!")
-            else if id_game = game[i][0]:   { jika stoknya nol (0) }
+            else if id_game = game[i][0] then   { jika stoknya nol (0) }
                 foundgame <- true
                 output("Stok Game tersebut sedang habis!")
                 break

@@ -1,26 +1,28 @@
-function tambah_game (game : array) -> array of string
+NOTASI ALGORITMIK
+
+function tambah_game (game : array of array of string) -> array of array of string
 {menambahkan game baru pada array data}
 
 KAMUS LOKAL
-nama_game, kategori, tahun_rilis, harga, stok_awal, id: string
-last_id : integer
-procedure iterLength(iterable : string or array) -> integer
+	nama_game, kategori, tahun_rilis, harga, stok_awal, id: string
+	last_id : integer
+	procedure iterLength(iterable : string or array) -> integer
 
 ALGORITMA
-{ validasi input }
-iterate
-	input(nama_game, kategori, tahun_rilis, harga, stok_awal)
-stop (nama_game == '' or kategori == '' or tahun_rilis == '' or harga == '' or stok_awal =='')
-	output("Mohon masukkan semua informasi mengenai game agar dapat disimpan BNMO.")
+	{ validasi input }
+	iterate
+		input(nama_game, kategori, tahun_rilis, harga, stok_awal)
+	stop (nama_game == '' or kategori == '' or tahun_rilis == '' or harga == '' or stok_awal =='')
+		output("Mohon masukkan semua informasi mengenai game agar dapat disimpan BNMO.")
 
-{ membuat id game }
-last_id <- procedure iterLength(game : array)
-if last_id < 100 then
-	id <- 'GAME0' + last_id
-else
-	id <- 'GAME' + last_id
+	{ membuat id game }
+	last_id <- procedure iterLength(game : array)
+	if (last_id < 100) then
+		id <- 'GAME0' + last_id
+	else
+		id <- 'GAME' + last_id
 
-{ menambah data di array game}
-game <- game + [[id, nama_game, kategori, tahun_rilis, harga, stok_awal]] 
-output ('Selamat! Berhasil menambahkan game {nama_game}.')
-    -> game 
+	{ menambah data di array game}
+	game <- game + [[id, nama_game, kategori, tahun_rilis, harga, stok_awal]] 
+	output ('Selamat! Berhasil menambahkan game {nama_game}.')
+	-> game 

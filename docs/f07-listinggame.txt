@@ -1,0 +1,68 @@
+NOTASI ALGORITMIK
+
+procedure list_game_toko (input,output tokogame : array of array)
+{ I.S. Data game tersimpan pada array tokogame }
+{ F.S. Data game di toko dicetak ke layar }
+    
+KAMUS LOKAL
+skema : string
+N : integer
+ascending : boolean
+kolom : integer
+sortpass, i_min, i, ind_min_value, i_value : integer
+common.iterLength(iterable : string or array) -> integer
+common.remove_thousands(numstr : string) -> string
+common.alignTable(arr: array of array) -> array of array
+
+ALGORITMA
+    input(skema)
+    output()
+    if (skema = 'tahun+' or skema = 'tahun-' or skema = 'harga+' or skema = 'harga-' or skema ='') then
+        N <- common.iterLength(tokogame)  { jumlah baris tokogame }
+        
+        if N > 1 then   { melakukan sort terurut membesar apabila isi array lebih dari 1 baris }
+            if (skema = '') then     { kolom yang ditinjau adalah ID, urutan pencetakan hasil membesar }
+                ascending <- True
+                kolom <- 0
+
+            else              { pengurutan berdasarkan tahun atau harga }
+                if (skema[5] = '+') then     { menentukan urutan pencetakan hasil akhir }
+                    ascending <- True
+                else
+                    ascending <- False
+                
+                if (skema = 'tahun+' or skema = 'tahun-') then    { kolom yang ditinjau adalah tahun }
+                    kolom <- 4
+                else                                          { kolom yang ditinjau adalah harga }
+                    kolom <- 2
+            
+            sortpass traversal [0..N-1]     { selection sort : terurut membesar }
+                i_min <- sortpass
+                i traversal [(sortpass+1)..N-1]
+                    { penetapan pembanding }
+                    if (kolom = 0) then
+                        ind_min_value <- int(tokogame[i_min][kolom][4] + tokogame[i_min][kolom][5] + tokogame[i_min][kolom][6])
+                        i_value <- int(tokogame[i][kolom][4] + tokogame[i][kolom][5] + tokogame[i][kolom][6])
+                    else
+                        ind_min_value <- int(common.remove_thousands(tokogame[i_min][kolom]))
+                        i_value <- int(common.remove_thousands(tokogame[i][kolom]))
+                    
+                    if (i_value < ind_min_value) then
+                        i_min <- i
+                
+                temp <- tokogame[i_min]
+                tokogame[i_min] <- tokogame[sortpass]
+                tokogame[sortpass] <- temp
+        
+
+        { proses mencetak hasil sort }
+        tokogame <- common.alignTable(tokogame)    { menyejajarkan spasi pada array (tabel) }
+        if (ascending) then       { mencetak tokogame dengan urutan sama; terurut membesar }
+            i traversal [0..N-1]
+                output(f'{i+1}. ' + common.arr_to_str(tokogame[i],' | '))
+        else   { mencetak tokogame dengan urutan terbalik; terurut mengecil }
+            i traversal[N-1..0]
+                output(f'{N-i}. ' + common.arr_to_str(tokogame[i],' | '))
+  
+    else
+       output('Skema sorting tidak valid!')

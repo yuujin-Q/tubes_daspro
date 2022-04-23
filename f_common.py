@@ -140,7 +140,7 @@ def create_inventory_arr(kepemilikan, game, userid):
     return user_inventory
 
 def create_tokogame_arr(game):
-    # SPESIFIKASI: menghasilkan array yang berisi data game yang dimiliki seorang user
+    # SPESIFIKASI: menghasilkan array yang berisi data game yang ada di toko
     # KAMUS LOKAL:
         # tokogame : array of array
         # j : integer
@@ -173,5 +173,5 @@ def remove_thousands(numstr):
         # arr_to_str(arr : array of string; delim : string) -> string
         # strSplit(str: string; delimiter : string or null) -> array
     # ALGORITMA:
-    numstr = arr_to_str(  strSplit(numstr, '.') ,'' )
+    numstr = arr_to_str(strSplit(numstr, '.') ,'' )
     return numstr

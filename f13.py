@@ -1,8 +1,8 @@
 '''
 MODUL F13-Melihat Riwayat Pembelian
 Spesifikasi : Memberikan daftar riwayat game yang pernah dibeli.
-I.S. : command riwayat
-F.S. : daftar riwayat game dengan format tertentu
+I.S. : Data riwayat dan kepemilikan masing-masing tersimpan pada array userhistory dan kepemilikan
+F.S. : Data riwayat dicetak ke layar dengan format tertentu
 Desainer dan coder : 16521262, 16521199
 '''
 # KAMUS LOKAL

@@ -15,7 +15,7 @@ KAMUS LOKAL
 
 ALGORITMA
     length <- common.iterLength(strings)
-    i traversal [1..length]
+    i traversal [0..length-1]
         x <- ord(strings[i])
         if not ((x >= ord('a') and x <= ord('z')) or (x >= ord('A') and x<= ord('Z')) or (x>=ord('0') and x<=ord('9')) or x == ord('_') or x == ord('-')) then
             -> False
@@ -37,14 +37,14 @@ ALGORITMA
     input(nama,username,password)
     { cek apakah username terpakai }
     if nama != '' and username!= '' and password!='' and validasiRegis(username) then
-        i traversal [1..common.iterLength(user)]
+        i traversal [0..common.iterLength(user)-1]
             if username = user[i][1] then
                 { username sudah terpakai }
                 output("Username " + username + " sudah terpakai, silakan menggunakan username lain.")
                 break
             else if (i = (common.iterLength(user)-1)) then
                 { username belum terpakai }
-                output("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
+                output("Username " + username + " telah berhasil register ke dalam " + '"Binomo"')
                 user <- user + [[str(common.iterLength(user)),username,nama,password,'User','0']]   { menambahkan data user baru ke array user }
         -> user
     else

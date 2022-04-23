@@ -1,0 +1,27 @@
+
+procedure riwayat (input user_id : integer, input userhistory, kepemilikan : array of array of string, output userhistory : array of array of string)
+{ I.S. Data riwayat dan kepemilikan masing-masing tersimpan pada array userhistory dan kepemilikan }
+{ F.S. Data riwayat dicetak ke layar }
+
+KAMUS LOKAL
+    ada_riwayat : boolean
+    i : integer
+ALGORITMA
+    { mengecek apakah user memiliki game (pernah melakukan pembelian) }
+    ada_riwayat <- False
+    i traversal[0..common.iterLength(kepemilikan)-1]
+        if str(user_id) = kepemilikan[i][1] then
+            ada_riwayat <- True
+    
+    { jika user tidak memiliki game (belum pernah melakukan pembelian) }
+    if ada_riwayat = False then
+        output("Maaf, kamu tidak ada riwayat pembelian game. Ketik perintah beli_game untuk membeli.")
+    
+    { jika user pernah melakukan pembelian }
+    else
+        { mengeluarkan output berupa list game yang dimiliki user }
+        output("Daftar game: ")
+        userhistory <- common.alignTable(userhistory)    { merapikan string dalam array }
+        i traversal[0..common.iterLength(userhistory)-1]
+            print(f'{i+1}. ' + common.arr_to_str(userhistory[i],' | '))    { mencetak sesuai format }
+

@@ -17,5 +17,5 @@ ALGORITMA
     riwayat <- csv_to_arr('riwayat',nama_folder)
     kepemilikan <- csv_to_arr('kepemilikan',nama_folder)
     { output (cetak ke layar) }
-    output("Selamat datang di antarmuka", '"%s"' % "Binomo")
+    output("Selamat datang di antarmuka "+'"Binomo"')
     -> user,game,riwayat,kepemilikan

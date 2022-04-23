@@ -29,8 +29,8 @@ ALGORITMA
         templine <- ''
         strlen <- common.iterLength(line)
         i traversal [0..strlen-1]   {menghapus escape character \n}
-            if i < strlen
-                if line[i] = '\n'
+            if (i < strlen) then
+                if (line[i] = '\n') then
                     break
             templine <- templine + line[i]
         temprow <- common.strSplit(templine, ';')

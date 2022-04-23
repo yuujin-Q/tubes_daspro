@@ -1,5 +1,28 @@
 NOTASI ALGORITMIK
 
+KAMUS
+    function iterLength (iterable : string) -> integer
+    { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+    function strSplit (str : string, delimiter : string) -> array of string
+    { memroses sebuah string dan memisahkannya menjadi sebuah array berdasarkan delimiter }
+    function arr_to_str (arr : array of string, delim : char) -> string
+    { menghasilkan sebuah string, yang dipisahkan delimiter (parameter delim), dari sebuah array (parameter arr) }
+    function arrarr_to_str(arrarr, delim) -> string
+    { menghasilkan sebuah string, yang dipisahkan delimiter (parameter delim), dari sebuah array of array (parameter arrarr) }
+    function alignTable (arr : array of string) -> array of string
+    { merapikan output tabel (array); I.S: arr terdefinisi dan jumlah baris>1 (indeks pertama nol) }
+    function create_inventory_arr(kepemilikan, game, userid) -> array of array of string
+    { menghasilkan array yang berisi data game yang dimiliki seorang user }
+    function create_tokogame_arr (game : array of array of string) -> array of array of string
+    { menghasilkan array yang berisi data game yang ada di toko }
+    function create_userhistory_arr(riwayat, userid) -> array of array of string
+    { menghasilkan array yang berisi data riwayat pembelian game oleh seorang user }
+    function remove_thousands (numstr : string) -> string
+    { menerima string numerik yang berisi pemisah ribuan '.' dan mengembalikan sebagai string numerik saja }
+
+
+REALISASI FUNGSI DAN PROSEDUR
+
 function iterLength (iterable : string) -> integer
 { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
 
@@ -9,8 +32,206 @@ KAMUS LOKAL
 
 ALGORITMA
     i <- 0
-    while true do     { pengulangan dilakukan hingga terjadi error dalam mengakses iterable }
+    while (true) do     { pengulangan dilakukan hingga terjadi error dalam mengakses iterable }
         try:
-            i+=1   { jika tidak error, penghitung i diincrement }
-        catch iterable[i] is None     { jika error, fungsi diselesaikan }
+            i <- i + 1   { jika tidak error, penghitung i diincrement }
+        catch (iterable[i] is None)     { jika error, fungsi diselesaikan }
             -> i
+
+
+
+function strSplit (str : string, delimiter : string) -> array of string
+{memroses sebuah string dan memisahkannya menjadi sebuah array berdasarkan delimiter}
+KAMUS LOKAL
+    strSplitResult : array of string
+    strLen, i : integer
+    tempstr : string
+    noDelim : boolean
+    
+    function iterLength (iterable : string) -> integer
+    { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+ALGORITMA
+    strSplitResult <- []
+    strLen <- iterLength(str)
+    i <- 0
+    tempstr <- ""
+    if (delimiter = None) then
+        noDelim <- true
+        delimiter <- " "
+    else
+        noDelim <- false
+
+    i traversal [0..range(strLen)-1]     {# pemisahan string dengan delimiter}
+        if (str[i] != delimiter) then
+            tempstr <- tempstr + str[i]
+        else
+            if (str[i] = delimiter) then
+                if noDelim then
+                    if tempstr!= ""
+                        strSplitResult <- strSplitResult + [tempstr]
+                    tempstr <- ''
+                else:
+                    strSplitResult <- strSplitResult + [tempstr]
+                    tempstr <- ''
+        
+    {penambahan hasil split yang tertinggal}
+    if (tempstr != '') then
+        strSplitResult<- strSplitResult + [tempstr]
+    else
+        if {not noDelim} then           {khusus untuk pemanggilan dengan delimiter, delimiter pada ujung baris menyebabkan penambahan ''}
+            strSplitResult <- strSplitResult + [tempstr]
+    
+    -> strSplitResult
+        
+
+
+function arr_to_str (arr : array of string, delim : char) -> string
+{ menghasilkan sebuah string, yang dipisahkan delimiter (parameter delim), dari sebuah array (parameter arr) }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        function iterLength (iterable : string) -> integer
+        { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+    { VAIRABEL }
+        strResult : string
+        colcount : integer
+        j : integer
+
+ALGORITMA
+    strResult <- ""
+    colcount <- iterLength(arr)     { jumlah kolom data }
+    j traversal [0..colcount-1]   # pemrosesan traversal kolom
+        strResult <- strResult + str(arr[j])
+        if (j < (colcount - 1)) then
+            strResult <- strResult + delim          { penambahan delimiter setelah sebuah elemen dari array }
+    -> strResult
+
+
+
+function arrarr_to_str(arrarr, delim) -> string
+{menghasilkan sebuah string, yang dipisahkan delimiter (parameter delim), dari sebuah array of array (parameter arrarr)}
+KAMUS LOKAL
+    strResult : string
+    rowcount : integer
+    i : integer
+    
+    function iterLength (iterable : string) -> integer
+    { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+    function arr_to_str (arr : array of string, delim : char) -> string
+    { menghasilkan sebuah string, yang dipisahkan delimiter (parameter delim), dari sebuah array (parameter arr) }
+
+ALGORITMA
+    strResult <- ""
+    rowcount <- iterLength(arrarr)        { jumlah baris data}
+    i traversal [0..rowcount-1]       { pemrosesan traversal baris}
+        strResult <- strResult + arr_to_str(arrarr[i],delim)
+        if i<rowcount-1 then
+            strResult <- strResult + '\n'         { penambahan '\n' pada akhir baris}
+    -> strResult
+
+
+
+function alignTable (arr : array of string) -> array of string
+{ merapikan output tabel (array); I.S: arr terdefinisi dan jumlah baris>1 (indeks pertama nol) }
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        function iterLength (iterable : string) -> integer
+        { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+    { VARIABEL }
+        arr : array of string
+        maxlength : array of int
+ALGORITMA
+    maxlength <- []      { array yang berisi panjang string maksimum pada sebuah kolom }
+    col traversal [0..iterLength(arr[0])-1]     { pencarian panjang maksimum pada kolom }
+        colmax <- iterLength(arr[0][col])
+        row traversal [0..iterLength(arr)-1]
+            if (iterLength(arr[row][col]) > colmax) then
+                colmax <- iterLength(arr[row][col])
+        maxlength <- maxlength + [colmax]
+    
+    { menambahkan spasi pada elemen sehingga panjang setiap elemen sama }
+    row traversal [0..iterLength(arr)-1]
+        col traversal [0..iterLength(arr[row])-1]
+            arr[row][col] <- arr[row][col] + (maxlength[col] - iterLength(arr[row][col])) * " "
+    -> arr
+
+
+
+function create_inventory_arr(kepemilikan, game, userid) -> array of array of string
+{menghasilkan array yang berisi data game yang dimiliki seorang user}
+KAMUS LOKAL
+    user_inventory : array of array
+    i, j : integer
+    
+    function iterLength (iterable : string) -> integer
+    { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+ALGORITMA
+    user_inventory <- []
+
+    if iterLength(kepemilikan)>1
+        userid <- str(userid)
+        i traversal [1..iterLength(kepemilikan)-1]     {membuat array yang berisi id dari game-game yang dimiliki seorang user}
+            if kepemilikan[i][1] = userid then
+                user_inventory <- user_inventory + [kepemilikan[i][0]]
+        i traversal [0..iterLength(user_inventory)-1]      {menambahkan data game dari toko berdasarkan id yang baru disimpan dalam array user_inventory}
+            j traversal [1.. iterLength(game)-1]
+                if user_inventory[i] = game[j][0]
+                    user_inventory[i] <- [game[j][0], game[j][1], game[j][4], game[j][2], game[j][3]]
+    -> user_inventory
+
+
+
+function create_tokogame_arr (game : array of array of string) -> array of array of string
+{ menghasilkan array yang berisi data game yang ada di toko }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        function iterLength (iterable : string) -> integer
+        { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+    { VARIABEL }
+        tokogame : array of array
+        j : integer
+
+ALGORITMA
+    tokogame <- []
+    if (iterLength(game)>1) then
+        j traversal [1..iterLength(game)-1]   { membuat baris pada tokogame }
+            tokogame <- tokogame + [[game[j][0], game[j][1], game[j][4], game[j][2], game[j][3], game[j][5]]]
+    -> tokogame
+
+
+
+function create_userhistory_arr(riwayat, userid) -> array of array of string
+{menghasilkan array yang berisi data riwayat pembelian game oleh seorang user}
+KAMUS LOKAL
+    userhistory : array of array
+    j : integer
+    
+    function iterLength (iterable : string) -> integer
+    { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+ALGORITMA
+    userhistory <- []
+
+    if iterLength(riwayat)>1 then
+        j traversal [1.. iterLength(riwayat)-1]   {membuat baris pada tokogame}
+            if str(userid) = riwayat[j][3] then
+                userhistory <- userhistory + [[riwayat[j][0], riwayat[j][1], riwayat[j][2], riwayat[j][4]]]
+    -> userhistory
+
+
+
+function remove_thousands (numstr : string) -> string
+{ menerima string numerik yang berisi pemisah ribuan '.' dan mengembalikan sebagai string numerik saja }
+
+KAMUS LOKAL
+    { FUNGSI DAN PROSEDUR }
+        function iterLength (iterable : string) -> integer
+        { menghasilkan panjang dari sebuah array atau string (tipe iterable) }
+        function strSplit (str : string, delimiter : string) -> array of string
+        { memroses sebuah string dan memisahkannya menjadi sebuah array berdasarkan delimiter }
+        function arr_to_str (arr : array of string, delim : char) -> string
+        { menghasilkan sebuah string, yang dipisahkan delimiter (parameter delim), dari sebuah array (parameter arr) }
+
+ALGORITMA
+    numstr <- arr_to_str(strSplit(numstr, '.') ,'' )
+    -> numstr

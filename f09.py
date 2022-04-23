@@ -1,8 +1,8 @@
 '''
 MODUL F09-Melihat Game yang dimiliki
 Spesifikasi : Memberikan daftar game yang dimiliki pengguna
-I.S. : command
-F.S. : data game
+I.S. : Data kepemilikan pengguna tersimpan pada array user_inventory
+F.S. : Data kepemilikan pengguna dicetak ke layar
 Desainer dan coder : 16521262, 16521199
 '''
 

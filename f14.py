@@ -1,5 +1,10 @@
-#buat fungsi help 
-
+'''
+MODUL F14-Help
+Spesifikasi : Menampilkan fitur program ke layar sebagai bantuan user
+I.S. : Membaca role
+F.S. : Menampilkan bantuan fitur program ke layar
+Desainer dan coder : 16521199
+'''
 
 def Help(user_role): 
     if user_role=='':  #blm log in

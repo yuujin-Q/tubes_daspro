@@ -1,0 +1,5 @@
+
+
+procedure list_game (input,output user_inventory : array of array of string)
+{ I.S. Data kepemilikan pengguna tersimpan pada array user_inventory }
+{ F.S. Data kepemilikan pengguna dicetak ke layar }

@@ -1,0 +1,6 @@
+
+
+
+procedure search_game_at_store (input toko : array of array of string, output search_result : array of array of string)
+{ I.S. Data game disimpan di array toko }
+{ F.S. Data game di toko dicetak ke layar }

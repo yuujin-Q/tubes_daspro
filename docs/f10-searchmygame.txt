@@ -34,7 +34,7 @@ ALGORITMA
     { search }
     count <- 0
     search_result <- []      { array hasil pencarian }
-    i traversal [1..common.iterLength(user_inventory)]
+    i traversal [0..common.iterLength(user_inventory)-1]
         if id and tahun then   { jika input kedua parameter kosong }
             count <- count + 1
             search_result <- search_result + [user_inventory[i]]
@@ -47,5 +47,5 @@ ALGORITMA
         output("Tidak ada game pada inventory-mu yang memenuhi kriteria")
     else      { minimal ada satu game }
         search_result <- common.alignTable(search_result)        { menyejajarkan posisi string dalam array }
-        i traversal [1..common.iterLength(search_result)]
+        i traversal [0..common.iterLength(search_result)-1]
             output(f'{i}. ' + common.arr_to_str(search_result[i],' | '))   { output dalam bentuk tabel yang sudah rapi }
