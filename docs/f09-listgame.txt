@@ -1,5 +1,27 @@
 
-
 procedure list_game (input,output user_inventory : array of array of string)
 { I.S. Data kepemilikan pengguna tersimpan pada array user_inventory }
 { F.S. Data kepemilikan pengguna dicetak ke layar }
+
+KAMUS LOKAL 
+  { FUNGSI DAN PROSEDUR }
+  common.iterLength (iterable: string or array) -> integer
+  
+  { VARIABEL }
+  count : integer
+  i : integer
+
+ALGORITMA
+{search}
+count <- common.iterLength(user_inventory)
+i traversal[0..count-1]
+  user_inventory[i] <- [user_inventory[i][0], user_inventory[i][1], user_inventory[i][3], user_inventory[i][4], user_inventory[i][2]]
+
+if count == 0 then {tidak ada game}
+  output("Maaf, kamu belum membeli game. Ketik perintah beli_game untuk beli.")
+else {minimal terdapat satu game}
+  output("Daftar game:")
+  
+  user_inventory <- common.alignTable(user_inventory) {mensejajarkan posisi string dalam array}
+  i traversal[0..count-1]
+    output(f'{i+1}. ' + common.arr_to_str(user_inventory[i],' | '))
