@@ -1,6 +1,51 @@
 
+Mencari Game di Toko dari ID, Nama Game, Harga, Kategori dan Tahun Rilis
+I.S. : toko terdefinisi, input id, nama game, harga, kategori, tahun rilis yang ingin digunakan dalam pencarian
+F.S. : output data game hasil pencarian berdasarkan input
 
+function search_game_at_store(toko: array) -> array
+   { Melakukan pencarian game di toko oleh user dan admin }
+  
+KAMUS LOKAL
+id_game, nama_game, kategori, harga, tahun_rilis : string
+id_kosong, nama_kosong, harga_kosong, kat_kosong, tahun_kosong : boolean
+count, i : integer
+search_result : array of array of string
+  
+ALGORITMA
+   input(id_game, nama_game, harga, kategori, tahun_rilis)
+   output("Daftar game pada toko yang memenuhi kriteria: ")
+   { jika ada input yang kosong, assign boolean True (digunakan dalam logika pencarian) }
+   if id_game = '' then id_kosong <- True
+   else
+       id_kosong <- False
+   if nama_game = '' then nama_kosong <- True
+   else
+       nama_kosong <- False
+   if harga = '' then harga_kosong <- True
+   else
+       harga_kosong <- False
+   if kategori = '' then kat_kosong <- True
+   else
+       kat_kosong= False
+   if tahun_rilis = '' then tahun_kosong <- True
+   else
+       tahun_kosong <- False
 
-procedure search_game_at_store (input toko : array of array of string, output search_result : array of array of string)
-{ I.S. Data game disimpan di array toko }
-{ F.S. Data game di toko dicetak ke layar }
+   { pencarian game }
+   count <- 0
+   search_result <- []
+   i traversal[0..common.iterLength(toko)-1]
+       if ((id_game = toko[i][0] or id_kosong) and (nama_game = toko[i][1] or nama_kosong) and (harga = toko[i][2] or harga_kosong)
+           and (kategori = toko[i][3] or kat_kosong) and (tahun_rilis = toko[i][4] or tahun_kosong) then
+           count <- count + 1
+           search_result <- search_result + [toko[i]]
+  
+   { output fungsi }
+   if count = 0 then  { tidak ada game }
+       output("Tidak ada game pada toko yang memenuhi kriteria")
+   else       { minimal ada satu game }
+       search_result <- common.alignTable(search_result)        { menyejajarkan posisi string dalam array }
+       i traversal[0..common.iterLength(search_result)-1]
+           output(f'{i+1}. ' + common.arr_to_str(search_result[i],' | '))  { output dalam bentuk tabel yang sudah rapi }
+
