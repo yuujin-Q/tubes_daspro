@@ -64,7 +64,17 @@ KAMUS
             'ubah_stok', 'list_game_toko', 'buy_game', 'list_game', 
             'search_my_game', 'search_game_at_store','topup','riwayat',
             'help','save','exit']
-            
+
+    {BONUS}
+    function b02.conch_shell(randomseeddata : array of integer)->array of integer
+    {fungsi digunakan untuk bermain dengan kerang ajaib dan menambahkan elemen pada randomseeddata, 
+    yang digunakan untuk generator pada pemanggilan berikutnya}
+
+    procedure b03.tictactoe()
+    {I.S : sembarang; F.S: pengguna berhasil bermain tictactoe}
+
+    randomseeddata <- [(int(time.time()) % 1000 + 1)]
+
 ALGORITMA
     {f15-load}
     parser <- argparse.ArgumentParser()
@@ -110,6 +120,12 @@ ALGORITMA
                     
                     (functions='exit'):     {f17}
                         call_func<-f17.bnmo_exit(user,game,riwayat,kepemilikan)
+                        
+                    (functions='tictactoe'): {b03}
+                        b03.tictactoe()
+                    
+                    (functions='kerangajaib'): {b02}
+                        randomseeddata <- b02.conch_shell(randomseeddata)
 
                     (logged_in and validfunc):
                         userinventory <- common.create_inventory_arr(kepemilikan, game, user_id)

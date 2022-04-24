@@ -1,0 +1,5 @@
+id;username;nama;password;role;saldo
+1;Administrator;Admin;passwordadmin;Admin;959999
+2;doniSalaman;Doni;janganmainbnmo;User;100000
+3;indraKan;Indra;ayomainbnmo;User;2999000
+4;budipekerti;Budi;gachanyawangi;User;100000

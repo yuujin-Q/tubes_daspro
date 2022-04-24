@@ -20,15 +20,15 @@ def checkwin(papan):
     # ALGORITMA
     for i in range(1,4):
         if papan[i][1]+papan[i][2]+papan[i][3]=='XXX' or papan[i][1]+papan[i][2]+papan[i][3]=='OOO':
-            return True
+            return True   # jika menang dengan garis horizontal
     for j in range(1,4):
         if papan[1][j]+papan[2][j]+papan[3][j]=='XXX' or papan[1][j]+papan[2][j]+papan[3][j]=='OOO':
-            return True
+            return True   # jika menang dengan garis vertikal
     if papan[1][1]+papan[2][2]+papan[3][3]=='XXX' or papan[1][1]+papan[2][2]+papan[3][3]=='OOO':
-        return True
+        return True   # jika menang dengan garis diagonal
     elif papan[1][3]+papan[2][2]+papan[3][1]=='XXX' or papan[1][3]+papan[2][2]+papan[3][1]=='OOO':
-        return True
-    else:
+        return True   # jika menang dengan garis diagonal
+    else:   # jika tidak ada garis yang terbentuk
         return False
 
 def validasi(X,Y,papan):
@@ -36,13 +36,13 @@ def validasi(X,Y,papan):
     # KAMUS LOKAL
     simbol = '#'   # constant simbol : string = '#'
     # ALGORITMA
-    if X < 1 or X > 3 or Y < 1 or Y > 3:
+    if X < 1 or X > 3 or Y < 1 or Y > 3:   # input di luar range kotak 3x3
         print('Kotak tidak valid.')
         return False
-    elif papan[X][Y] != simbol:
+    elif papan[X][Y] != simbol:   # input di kotak yang sudah terisi
         print('Kotak sudah terisi. Silakan pilih kotak lain.')
         return False
-    else:
+    else:   # input valid
         return True
     
 def printpapan(papan):
@@ -62,19 +62,33 @@ def giliran(pemain, papan):
     print(f"Giliran Pemain {pemain}")
              
     valid = False
-    while not valid:
+    while not valid:   # terus meminta input sampai valid
         X = int(input("Baris: "))
         Y = int(input("Kolom: "))
-        valid = validasi(X,Y, papan)
-    papan[X][Y] = pemain
+        valid = validasi(X,Y, papan)   # cek validasi
+    papan[X][Y] = pemain   # mengisi input ke kotak
 
     print("Status Papan")
-    printpapan(papan)
+    printpapan(papan)   # mencetak papan ke layar
     print()
     return papan
 
 # REALISASI PROSEDUR UTAMA
 def tictactoe():
+    # Spesifikasi
+    # KAMUS LOKAL
+        # FUNGSI DAN PROSEDUR
+            # function checkwin (papan : array of array of string) -> boolean  { mengecek apakah sudah ada yang menang atau belum }
+            # function validasi (X,Y: string, papan : array of array of string) -> boolean  { mengecek apakah input valid }
+            # procedure printpapan (input papan : array of array of string)  { mencetak papan tic-tac-toe ke layar }
+            # function giliran (pemain : string, papan : array of array of string) -> array of array of string  { Meminta input pada giliran pemain }
+        # VARIABEL
+            # row,col : integer
+            # papan : array of array of char
+            # win : boolean
+            # langkah : integer
+    
+    # ALGORITMA
     # output keterangan awal
     print("Legenda:")
     print("# Kosong")

@@ -28,6 +28,8 @@ def Help(user_role):
             print("9. help - Untuk memberikan panduan penggunaan sistem")
             print("10. save - Untuk melakukan penyimpanan data ke dalam file setelah dilakukan perubahan")
             print("11. exit - Untuk keluar dari aplikasi")
+            print("12. kerangajaib - Untuk bermain bersama kerang ajaib")
+            print("13. tictactoe - Untuk bermain tic-tac-toe")
         else: #user
             print("===========HELP===========")
             print("1. login - Untuk melakukan login ke dalam sistem ")
@@ -40,3 +42,5 @@ def Help(user_role):
             print("8. help - Untuk memberikan panduan penggunaan sistem")    
             print("9. save - Untuk melakukan penyimpanan data ke dalam file setelah dilakukan perubahan")
             print("10. exit - Untuk keluar dari aplikasi")
+            print("11. kerangajaib - Untuk bermain bersama kerang ajaib")
+            print("12. tictactoe - Untuk bermain tic-tac-toe")

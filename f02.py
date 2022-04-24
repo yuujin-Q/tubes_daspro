@@ -50,6 +50,7 @@ def register (user):
                 # username belum terpakai
                 print("Username " + username + " telah berhasil register ke dalam " + '"%s"' % "Binomo" + ".")
                 user += [[str(common.iterLength(user)),username,nama,password,'User','0']] # menambahkan data user baru ke array user
-        return user
+        
     else:
         print("Masukan tidak valid.")
+    return user

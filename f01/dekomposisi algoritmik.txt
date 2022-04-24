@@ -1,4 +1,12 @@
 SUBPROGRAM
+    F02_REGISTER
+        { I.S. : program berjalan, pengguna adalah admin }
+        Masukkan data user yang akan diregistrasikan
+        { F.S./I.S. : nama, username, dan password diisi }
+        Validasi Username
+        { F.S Jika username unik dan tidak terdiri atas tanda baca yg tidak valid, 
+            maka pengguna user akan terdaftar, jika tidak akan diminta input sampai benar }
+
     F03_LOGIN
         { I.S. : user belum melakukan login }
         Masukkan Username dan Password
@@ -89,10 +97,9 @@ SUBPROGRAM
         { F.S. Data tersimpan pada file csv }
     F17_EXIT
         { I.S. Program berjalan }
-        Meminta 
-        { F.S. Program berhenti / kel
+        Meminta masukan apakah ingin menyimpan data atau tidak
         { F.S./I.S. Data di-save atau data tidak di-save}
-        Keluar dari programuar }
+        { F.S. Program berhenti / keluar dari program }
 
 
 

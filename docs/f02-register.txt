@@ -46,6 +46,6 @@ ALGORITMA
                 { username belum terpakai }
                 output("Username " + username + " telah berhasil register ke dalam " + '"Binomo"')
                 user <- user + [[str(common.iterLength(user)),username,nama,password,'User','0']]   { menambahkan data user baru ke array user }
-        -> user
     else
         output("Masukan tidak valid.")
+    -> user

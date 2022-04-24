@@ -70,7 +70,7 @@ ALGORITMA
                     if tempstr!= ""
                         strSplitResult <- strSplitResult + [tempstr]
                     tempstr <- ''
-                else:
+                else
                     strSplitResult <- strSplitResult + [tempstr]
                     tempstr <- ''
         
@@ -78,7 +78,7 @@ ALGORITMA
     if (tempstr != '') then
         strSplitResult<- strSplitResult + [tempstr]
     else
-        if {not noDelim} then           {khusus untuk pemanggilan dengan delimiter, delimiter pada ujung baris menyebabkan penambahan ''}
+        if (not (noDelim)) then           {khusus untuk pemanggilan dengan delimiter, delimiter pada ujung baris menyebabkan penambahan ''}
             strSplitResult <- strSplitResult + [tempstr]
     
     -> strSplitResult
@@ -100,7 +100,7 @@ KAMUS LOKAL
 ALGORITMA
     strResult <- ""
     colcount <- iterLength(arr)     { jumlah kolom data }
-    j traversal [0..colcount-1]   # pemrosesan traversal kolom
+    j traversal [0..colcount-1]    { pemrosesan traversal kolom }
         strResult <- strResult + str(arr[j])
         if (j < (colcount - 1)) then
             strResult <- strResult + delim          { penambahan delimiter setelah sebuah elemen dari array }

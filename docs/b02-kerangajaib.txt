@@ -1,0 +1,30 @@
+NOTASI ALGORITMIK
+
+function lcgmethod (seed_data: array)
+    lastindex <- common.iterLength(seed_data)-1
+    m <- int(time.time()) // int(time.time())-999
+    a <- int(time.time()) // int(time.time())-666
+    c <- int(time.time()) // int(time.time())-333
+
+    new_seed <- (a*seed_data[lastindex] + c) % m
+    -> new_seed
+
+
+function conch_shell(randomseeddata: )
+    randomseeddata <- randomseeddata + [lcgmethod(randomseeddata)]
+    lastindex <- common.iterLength(randomseeddata)-1
+
+    outputoption <- randomseeddata[lastindex] % 8
+    input(q)
+
+    depend on outputoption
+        outputoption = 0 : output('Bisa Jadi.')
+        outputoption = 1 : output('Tidak tau.')
+        outputoption = 2 : output('Mungkin.')
+        outputoption = 3 : output('Tidak mungkin.')
+        outputoption = 4 : output('Tentu saja iya.')
+        outputoption = 5 : output('Tentu saja tidak.')
+        outputoption = 6 : output('Iya.')
+        outputoption = 7 : output('Tidak.')
+    
+    -> randomseeddata
