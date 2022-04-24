@@ -65,6 +65,7 @@
 # IMPORT MODUL
 import argparse
 import os
+import time
 import f_common as common
 import f02 as f02
 import f03 as f03
@@ -82,6 +83,12 @@ import f14 as f14
 import f15 as f15
 import f16 as f16
 import f17 as f17
+
+
+# BONUS
+import b02 as b02
+import b03 as b03
+randomseeddata = [(int(time.time()) % 1000 + 1)]
 
 # LOAD
 parser = argparse.ArgumentParser()
@@ -127,6 +134,12 @@ if args.folder != '':
             
             elif functions=='exit':     # f17
                 call_func=f17.bnmo_exit(user,game,riwayat,kepemilikan)
+                
+            elif functions=='tictactoe':
+                b03.tictactoe()
+            
+            elif functions=='kerangajaib':
+                randomseeddata = b02.conch_shell(randomseeddata)
 
             elif logged_in and validfunc:
                 userinventory = common.create_inventory_arr(kepemilikan, game, user_id)

@@ -27,14 +27,15 @@ def login(datauser):
             print("Halo " + datauser[i][2] + "! Selamat datang di " + '"%s"' % "Binomo" + ".")
             found = True
             user_id = int(datauser[i][0])
-
+        
+        
     if not found:
-        if username =='' or password =='':
+        if username =='' or password =='':  # apabila ada input kosong
             print("Anda belum memasukkan username dan/atau password!")
-        else:
+        else:   # apabila username tidak ditemukan atau username & password tidak cocok
             print('Password atau username salah atau tidak ditemukan.')
         user_id = -1
 
-    # apabila username tidak ditemukan atau username & password tidak cocok
+
     
     return found,user_id

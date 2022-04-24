@@ -12,6 +12,8 @@ def Help(user_role):
         print("1. login - Untuk melakukan login ke dalam sistem")
         print("2. help - Untuk memberikan panduan penggunaan sistem")
         print("3. exit - Untuk keluar dari aplikasi")
+        print("4. kerangajaib - Untuk bermain bersama kerang ajaib")
+        print("5. tictactoe - Untuk bermain tic-tac-toe")
     else: #sudah log in
         if user_role=='Admin': #admin
             print("===========HELP===========")
